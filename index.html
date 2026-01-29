@@ -432,11 +432,13 @@
             margin: 0.5rem 0;
         }
 
+        /* Social Links */
         .social-links {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
             margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
         .social-links a {
@@ -450,10 +452,66 @@
             color: #d4a574;
             text-decoration: none;
             transition: all 0.3s;
+            position: relative;
         }
 
         .social-links a:hover {
-            background: #d4a574;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links a svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Facebook - остается как есть при наведении */
+        .social-links a[title="Facebook"]:hover {
+            background: #1877f2;
+            border-color: #1877f2;
+            color: #fff;
+        }
+
+        /* Google Map - цветная метка на белом */
+        .social-links a[title="Google Map"]:hover {
+            background: #fff;
+            border-color: #d4a574;
+        }
+
+        .social-links a[title="Google Map"]:hover svg {
+            fill: url(#google-gradient);
+        }
+
+        /* Zalo - синяя Z на белом */
+        /* Zalo - синяя Z на белом */
+.social-links a.zalo-link {
+    border-color: #d4a574;
+    color: #d4a574;
+}
+
+.social-links a.zalo-link:hover {
+    background: #0068ff;
+    border-color: #0068ff;
+    color: #fff;
+}
+
+.social-links a.zalo-link span {
+    transition: color 0.3s;
+}
+
+.social-links a.zalo-link:hover span {
+    color: #fff;
+}
+
+        /* WhatsApp - зеленая как сейчас */
+        .social-links a.whatsapp-link {
+            border-color: #d4a574;
+            color: #d4a574;
+        }
+
+        .social-links a.whatsapp-link:hover {
+            background: #25d366;
+            border-color: #25d366;
             color: #fff;
         }
 
@@ -566,6 +624,20 @@
             .lang-btn {
                 font-size: 1.3rem;
             }
+
+            .social-links {
+                gap: 1rem;
+            }
+            
+            .social-links a {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .social-links a svg {
+                width: 20px;
+                height: 20px;
+            }
         }
     </style>
 </head>
@@ -595,7 +667,6 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <!-- Узкая полоска с фото над H1 -->
         <div class="hero-image-strip">
             <img src="images_YMY/hero-bg.JPG" alt="YMY Makeup">
         </div>
@@ -681,19 +752,19 @@
                 <img src="images_YMY/IMG_2210_Original.jpg" alt="Bridal Makeup">
                 <p data-en="Bridal Makeup" data-vi="Trang điểm cô dâu">Bridal Makeup</p>
             </div>
-            <div class="portfolio-item" onclick="openLightbox(2)">
+            <div class="portfolio-item" onclick="openLightbox(1)">
                 <img src="images_YMY/IMG_0462.JPG" alt="Natural Glam">
                 <p data-en="Natural Glam" data-vi="Vẻ đẹp tự nhiên">Natural Glam</p>
             </div>
-             <div class="portfolio-item" onclick="openLightbox(1)">
+            <div class="portfolio-item" onclick="openLightbox(2)">
                 <img src="images_YMY/IMG_7546.jpg" alt="Evening Look">
                 <p data-en="Evening Look" data-vi="Phong cách tối">Evening Look</p>
             </div>
-             <div class="portfolio-item" onclick="openLightbox(4)">
+            <div class="portfolio-item" onclick="openLightbox(3)">
                 <img src="images_YMY/IMG_7548.jpg" alt="Special Event">
                 <p data-en="Special Event" data-vi="Sự kiện đặc biệt">Special Event</p>
             </div>
-            <div class="portfolio-item" onclick="openLightbox(3)">
+            <div class="portfolio-item" onclick="openLightbox(4)">
                 <img src="images_YMY/IMG_6010.JPG" alt="Photoshoot Style">
                 <p data-en="Photoshoot Style" data-vi="Phong cách chụp ảnh">Photoshoot Style</p>
             </div>  
@@ -762,36 +833,61 @@
                 <p><strong data-en="📍 Address:" data-vi="📍 Địa chỉ:">📍 Address:</strong><br>56 Võ Văn Kiệt, Sơn Trà, Đà Nẵng</p>
                 <p><strong data-en="📱 Phone / WhatsApp / Zalo:" data-vi="📱 Điện thoại / WhatsApp / Zalo:">📱 Phone / WhatsApp / Zalo:</strong><br>+84 0865 292 379</p>
             </div>
+            
+            <!-- SVG Gradient для Google Maps -->
+            <svg width="0" height="0" style="position: absolute;">
+                <defs>
+                    <linearGradient id="google-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#4285f4;stop-opacity:1" />
+                        <stop offset="33%" style="stop-color:#34a853;stop-opacity:1" />
+                        <stop offset="66%" style="stop-color:#fbbc05;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#ea4335;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+            </svg>
+
             <div class="social-links">
-                <a href="https://www.facebook.com/share/1Kb7cdPf9S/?mibextid=wwXIfr" title="Facebook">f</a>
-                <a href="https://maps.app.goo.gl/8bBptKRvDAn51fMZ6?g_st=ic" title="Google Map">📍</a>
+                <a href="https://www.facebook.com/share/1Kb7cdPf9S/?mibextid=wwXIfr" target="_blank" title="Facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://maps.app.goo.gl/8bBptKRvDAn51fMZ6?g_st=ic" target="_blank" title="Google Map">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                </a>
+               <a href="https://zalo.me/0865292379" target="_blank" title="Zalo" class="zalo-link">
+    <span style="font-size: 20px; font-weight: bold; font-family: Arial, sans-serif;">Z</span>
+</a>
+                <a href="https://wa.me/840865292379" target="_blank" title="WhatsApp" class="whatsapp-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p data-en="&copy; 2026 YMY Makeup Academy. All rights reserved." 
-           data-vi="&copy; 2026 Học viện trang điểm YMY. Bảo lưu mọi quyền.">&copy; 2026 YMY Makeup Academy. All rights reserved.</p>
+        <p data-en="&copy; 2025 YMY Makeup Academy. All rights reserved." 
+           data-vi="&copy; 2025 Học viện trang điểm YMY. Bảo lưu mọi quyền.">&copy; 2025 YMY Makeup Academy. All rights reserved.</p>
         <p data-en="Professional Makeup Services in Da Nang, Vietnam" 
            data-vi="Dịch vụ trang điểm chuyên nghiệp tại Đà Nẵng, Việt Nam">Professional Makeup Services in Da Nang, Vietnam</p>
     </footer>
 
     <script>
-        // Текущий язык
         let currentLang = 'en';
 
-        // Функция смены языка
         function changeLanguage(lang) {
             currentLang = lang;
             
-            // Обновляем активную кнопку
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             event.target.classList.add('active');
             
-            // Обновляем все элементы с переводом
             document.querySelectorAll('[data-en]').forEach(element => {
                 const text = element.getAttribute(`data-${lang}`);
                 if (element.tagName === 'P' || element.tagName === 'H1' || element.tagName === 'H2' || element.tagName === 'H3' || element.tagName === 'A' || element.tagName === 'STRONG') {
@@ -801,26 +897,22 @@
                 }
             });
             
-            // Обновляем lightbox captions
             updateLightboxCaptions();
         }
 
-        // Обновление подписей в lightbox
         function updateLightboxCaptions() {
             images[0].caption = currentLang === 'en' ? 'Bridal Makeup' : 'Trang điểm cô dâu';
-            images[1].caption = currentLang === 'en' ? 'Evening Look' : 'Phong cách tối';
-            images[2].caption = currentLang === 'en' ? 'Natural Glam' : 'Vẻ đẹp tự nhiên';
-            images[3].caption = currentLang === 'en' ? 'Photoshoot Style' : 'Phong cách chụp ảnh';
-            images[4].caption = currentLang === 'en' ? 'Special Event' : 'Sự kiện đặc biệt';
+            images[1].caption = currentLang === 'en' ? 'Natural Glam' : 'Vẻ đẹp tự nhiên';
+            images[2].caption = currentLang === 'en' ? 'Evening Look' : 'Phong cách tối';
+            images[3].caption = currentLang === 'en' ? 'Special Event' : 'Sự kiện đặc biệt';
+            images[4].caption = currentLang === 'en' ? 'Photoshoot Style' : 'Phong cách chụp ảnh';
         }
 
-        // Меню
         function toggleMenu() {
             const menu = document.getElementById('navMenu');
             menu.classList.toggle('active');
         }
 
-        // Плавная прокрутка
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -832,13 +924,12 @@
             });
         });
 
-        // Lightbox функционал
         const images = [
             { src: 'images_YMY/IMG_2210_Original.jpg', caption: 'Bridal Makeup' },
-            { src: 'images_YMY/IMG_7546.jpg', caption: 'Evening Look' },
             { src: 'images_YMY/IMG_0462.JPG', caption: 'Natural Glam' },
-            { src: 'images_YMY/IMG_6010.JPG', caption: 'Photoshoot Style' },
-            { src: 'images_YMY/IMG_7548.jpg', caption: 'Special Event' }
+            { src: 'images_YMY/IMG_7546.jpg', caption: 'Evening Look' },
+            { src: 'images_YMY/IMG_7548.jpg', caption: 'Special Event' },
+            { src: 'images_YMY/IMG_6010.JPG', caption: 'Photoshoot Style' }
         ];
 
         let currentIndex = 0;
@@ -879,14 +970,12 @@
             caption.textContent = images[currentIndex].caption;
         }
 
-        // Закрытие по клавише Escape
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 const lightbox = document.getElementById('lightbox');
                 lightbox.classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
-            // Стрелки для навигации
             if (event.key === 'ArrowLeft') {
                 changeImage(-1, event);
             }
