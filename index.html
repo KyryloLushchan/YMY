@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YMY Makeup Academy - Professional Bridal & Event Makeup in Da Nang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #5a5a5a;
+            background: #fafafa;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 300;
+            color: #2c2c2c;
+            letter-spacing: 2px;
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: #d4a574;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #5a5a5a;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            color: #d4a574;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .lang-btn {
+            padding: 0.3rem 0.5rem;
+            border: 2px solid #d4a574;
+            background: transparent;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            border-radius: 4px;
+            line-height: 1;
+        }
+
+        .lang-btn.active {
+            background: #d4a574;
+            transform: scale(1.1);
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.15);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23f5ebe0" width="1200" height="800"/></svg>');
+            background-size: cover;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        /* Узкая полоска с фото над H1 */
+        .hero-image-strip {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            opacity: 0.4;
+        }
+
+        .hero-image-strip img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            margin-top: 100px;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 1rem;
+            font-size: 3rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            color: #7a7a7a;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: 2px solid #d4a574;
+            background: #d4a574;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: #d4a574;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #d4a574;
+        }
+
+        .btn-secondary:hover {
+            background: #d4a574;
+            color: #fff;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: #d4a574;
+            margin: 1rem auto 0;
+        }
+
+        /* About Section */
+        .about {
+            background: #fff;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #d4a574;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 80px 20px;
+            background: #f8f8f8;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 3/4;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-item p {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 30px 20px 20px;
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover p {
+            transform: translateY(0);
+        }
+
+        /* Lightbox для полноэкранного просмотра */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 85%;
+            max-height: 85%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 50px;
+            color: white;
+            cursor: pointer;
+            z-index: 10000;
+            transition: color 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: #d4a574;
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            padding: 20px;
+            user-select: none;
+            transition: color 0.3s;
+        }
+
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            color: #d4a574;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        /* Why Choose Us */
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .why-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .why-icon {
+            font-size: 2rem;
+            color: #d4a574;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #fff;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            margin: 2rem 0;
+            line-height: 2;
+        }
+
+        .contact-info p {
+            margin: 0.5rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #d4a574;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4a574;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #d4a574;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c2c2c;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 5%;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #d4a574;
+            transition: 0.3s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            
+            .hero {
+                height: 80vh;
+            }
+
+            .hero-image-strip {
+                height: 100px;
+            }
+
+            .hero-content {
+                margin-top: 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 60px);
+                background: #fff;
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                transition: left 0.3s;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            section {
+                padding: 3rem 5%;
+            }
+
+            .services-grid,
+            .portfolio-grid,
+            .why-us-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .lightbox-content {
+                max-width: 95%;
+                max-height: 80%;
+            }
+
+            .lightbox-content img {
+                max-height: 70vh;
+            }
+
+            .lightbox-prev,
+            .lightbox-next {
+                font-size: 30px;
+                padding: 10px;
+            }
+
+            .lightbox-close {
+                right: 20px;
+                font-size: 40px;
+                top: 10px;
+            }
+
+            .language-switcher {
+                margin-top: 1rem;
+            }
+
+            .lang-btn {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">YMY</div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="navMenu">
+                <li><a href="#home" data-en="Home" data-vi="Trang chủ">Home</a></li>
+                <li><a href="#about" data-en="About" data-vi="Giới thiệu">About</a></li>
+                <li><a href="#services" data-en="Services" data-vi="Dịch vụ">Services</a></li>
+                <li><a href="#portfolio" data-en="Portfolio" data-vi="Hình ảnh">Portfolio</a></li>
+                <li><a href="#contact" data-en="Contact" data-vi="Liên hệ">Contact</a></li>
+                <li class="language-switcher">
+                    <button class="lang-btn active" onclick="changeLanguage('en')" title="English">🇬🇧</button>
+                    <button class="lang-btn" onclick="changeLanguage('vi')" title="Tiếng Việt">🇻🇳</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <!-- Узкая полоска с фото над H1 -->
+        <div class="hero-image-strip">
+            <img src="images_YMY/hero-bg.JPG" alt="YMY Makeup">
+        </div>
+        
+        <div class="hero-content">
+            <h1 data-en="YMY Makeup Academy" data-vi="YMY Makeup Academy">YMY Makeup Academy</h1>
+            <p class="hero-tagline" data-en="Where Beauty Meets Elegance" data-vi="Nơi vẻ đẹp gặp gỡ sự thanh lịch">Where Beauty Meets Elegance</p>
+            <p style="margin-bottom: 2rem;" data-en="Professional Bridal & Event Makeup in Da Nang" data-vi="Trang điểm cô dâu và sự kiện chuyên nghiệp tại Đà Nẵng">Professional Bridal & Event Makeup in Da Nang</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn" data-en="Book Appointment" data-vi="Đặt lịch hẹn">Book Appointment</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title" data-en="About YMY" data-vi="Giới thiệu YMY">About YMY</h2>
+        <div class="about-content">
+            <p data-en="YMY Makeup Academy is a premier beauty destination in Da Nang, dedicated to enhancing your natural beauty for life's most precious moments. With years of expertise in bridal and event makeup, we believe every client deserves a personalized, luxurious experience." 
+               data-vi="Học viện trang điểm YMY là điểm đến làm đẹp hàng đầu tại Đà Nẵng, chuyên nâng cao vẻ đẹp tự nhiên của bạn cho những khoảnh khắc quý giá nhất trong cuộc đời. Với nhiều năm kinh nghiệm trong lĩnh vực trang điểm cô dâu và sự kiện, chúng tôi tin rằng mỗi khách hàng đều xứng đáng có được trải nghiệm sang trọng và cá nhân hóa.">
+                YMY Makeup Academy is a premier beauty destination in Da Nang, dedicated to enhancing your natural beauty for life's most precious moments. With years of expertise in bridal and event makeup, we believe every client deserves a personalized, luxurious experience.
+            </p>
+            <p style="margin-top: 1.5rem;" 
+               data-en="Our studio combines professional artistry with high-quality cosmetics to create timeless, elegant looks. Whether you're preparing for your wedding day, a special event, or pursuing a career in makeup artistry, YMY is your trusted partner in beauty." 
+               data-vi="Studio của chúng tôi kết hợp nghệ thuật chuyên nghiệp với mỹ phẩm cao cấp để tạo ra những vẻ đẹp thanh lịch, vượt thời gian. Cho dù bạn đang chuẩn bị cho ngày cưới, một sự kiện đặc biệt, hay theo đuổi sự nghiệp nghệ thuật trang điểm, YMY là đối tác tin cậy của bạn trong lĩnh vực làm đẹp.">
+                Our studio combines professional artistry with high-quality cosmetics to create timeless, elegant looks. Whether you're preparing for your wedding day, a special event, or pursuing a career in makeup artistry, YMY is your trusted partner in beauty.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="section-title" data-en="Our Services" data-vi="Dịch vụ của chúng tôi">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💍</div>
+                <h3 data-en="Bridal Makeup" data-vi="Trang điểm cô dâu">Bridal Makeup</h3>
+                <p data-en="Flawless, long-lasting makeup for your special day. Trial sessions available." 
+                   data-vi="Trang điểm hoàn hảo, lâu trôi cho ngày trọng đại của bạn. Có dịch vụ thử makeup.">
+                    Flawless, long-lasting makeup for your special day. Trial sessions available.
+                </p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3 data-en="Event Makeup" data-vi="Trang điểm sự kiện">Event Makeup</h3>
+                <p data-en="Elegant looks for parties, galas, and celebrations of all kinds." 
+                   data-vi="Vẻ ngoài thanh lịch cho các bữa tiệc, dạ hội và mọi loại lễ kỷ niệm.">
+                    Elegant looks for parties, galas, and celebrations of all kinds.
+                </p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📸</div>
+                <h3 data-en="Photoshoot Makeup" data-vi="Trang điểm chụp ảnh">Photoshoot Makeup</h3>
+                <p data-en="Camera-ready makeup designed for professional photography." 
+                   data-vi="Trang điểm chuyên nghiệp được thiết kế cho chụp ảnh.">
+                    Camera-ready makeup designed for professional photography.
+                </p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚗</div>
+                <h3 data-en="On-Location Service" data-vi="Dịch vụ tại nhà">On-Location Service</h3>
+                <p data-en="We bring our expertise to your preferred location for ultimate convenience." 
+                   data-vi="Chúng tôi mang chuyên môn đến địa điểm bạn mong muốn để thuận tiện nhất.">
+                    We bring our expertise to your preferred location for ultimate convenience.
+                </p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎓</div>
+                <h3 data-en="Makeup Academy" data-vi="Học viện trang điểm">Makeup Academy</h3>
+                <p data-en="Professional makeup courses for aspiring artists. Learn from the best." 
+                   data-vi="Khóa học trang điểm chuyên nghiệp cho các nghệ sĩ tương lai. Học từ những người giỏi nhất.">
+                    Professional makeup courses for aspiring artists. Learn from the best.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <h2 class="section-title" data-en="Our Work" data-vi="Tác phẩm của chúng tôi">Our Work</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item" onclick="openLightbox(0)">
+                <img src="images_YMY/IMG_2210_Original.jpg" alt="Bridal Makeup">
+                <p data-en="Bridal Makeup" data-vi="Trang điểm cô dâu">Bridal Makeup</p>
+            </div>
+            <div class="portfolio-item" onclick="openLightbox(2)">
+                <img src="images_YMY/IMG_0462.JPG" alt="Natural Glam">
+                <p data-en="Natural Glam" data-vi="Vẻ đẹp tự nhiên">Natural Glam</p>
+            </div>
+             <div class="portfolio-item" onclick="openLightbox(1)">
+                <img src="images_YMY/IMG_7546.jpg" alt="Evening Look">
+                <p data-en="Evening Look" data-vi="Phong cách tối">Evening Look</p>
+            </div>
+             <div class="portfolio-item" onclick="openLightbox(4)">
+                <img src="images_YMY/IMG_7548.jpg" alt="Special Event">
+                <p data-en="Special Event" data-vi="Sự kiện đặc biệt">Special Event</p>
+            </div>
+            <div class="portfolio-item" onclick="openLightbox(3)">
+                <img src="images_YMY/IMG_6010.JPG" alt="Photoshoot Style">
+                <p data-en="Photoshoot Style" data-vi="Phong cách chụp ảnh">Photoshoot Style</p>
+            </div>  
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+        <span class="lightbox-prev" onclick="changeImage(-1, event)">&#10094;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+        <span class="lightbox-next" onclick="changeImage(1, event)">&#10095;</span>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us">
+        <h2 class="section-title" data-en="Why Choose YMY" data-vi="Tại sao chọn YMY">Why Choose YMY</h2>
+        <div class="why-us-grid">
+            <div class="why-item">
+                <div class="why-icon">👑</div>
+                <h3 data-en="Expert Artists" data-vi="Nghệ sĩ chuyên nghiệp">Expert Artists</h3>
+                <p data-en="Years of professional experience in bridal and event makeup" 
+                   data-vi="Nhiều năm kinh nghiệm chuyên nghiệp trong trang điểm cô dâu và sự kiện">
+                    Years of professional experience in bridal and event makeup
+                </p>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">💄</div>
+                <h3 data-en="Premium Products" data-vi="Sản phẩm cao cấp">Premium Products</h3>
+                <p data-en="Only high-quality, trusted cosmetic brands for flawless results" 
+                   data-vi="Chỉ sử dụng các thương hiệu mỹ phẩm uy tín, chất lượng cao cho kết quả hoàn hảo">
+                    Only high-quality, trusted cosmetic brands for flawless results
+                </p>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">🌸</div>
+                <h3 data-en="Natural Elegance" data-vi="Vẻ đẹp thanh lịch">Natural Elegance</h3>
+                <p data-en="Enhancing your natural beauty with timeless, sophisticated styles" 
+                   data-vi="Nâng cao vẻ đẹp tự nhiên của bạn với phong cách tinh tế, vượt thời gian">
+                    Enhancing your natural beauty with timeless, sophisticated styles
+                </p>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">📍</div>
+                <h3 data-en="Flexible Service" data-vi="Dịch vụ linh hoạt">Flexible Service</h3>
+                <p data-en="Studio appointments and on-location services available" 
+                   data-vi="Có dịch vụ tại studio và tận nơi">
+                    Studio appointments and on-location services available
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title" data-en="Get In Touch" data-vi="Liên hệ với chúng tôi">Get In Touch</h2>
+        <div class="contact-content">
+            <p data-en="Ready to book your appointment or learn more about our services?" 
+               data-vi="Sẵn sàng đặt lịch hẹn hoặc tìm hiểu thêm về dịch vụ của chúng tôi?">
+                Ready to book your appointment or learn more about our services?
+            </p>
+            <div class="contact-info">
+                <p><strong data-en="📍 Address:" data-vi="📍 Địa chỉ:">📍 Address:</strong><br>56 Võ Văn Kiệt, Sơn Trà, Đà Nẵng</p>
+                <p><strong data-en="📱 Phone / WhatsApp / Zalo:" data-vi="📱 Điện thoại / WhatsApp / Zalo:">📱 Phone / WhatsApp / Zalo:</strong><br>+84 0865 292 379</p>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1Kb7cdPf9S/?mibextid=wwXIfr" title="Facebook">f</a>
+                <a href="https://maps.app.goo.gl/8bBptKRvDAn51fMZ6?g_st=ic" title="Google Map">📍</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p data-en="&copy; 2026 YMY Makeup Academy. All rights reserved." 
+           data-vi="&copy; 2026 Học viện trang điểm YMY. Bảo lưu mọi quyền.">&copy; 2026 YMY Makeup Academy. All rights reserved.</p>
+        <p data-en="Professional Makeup Services in Da Nang, Vietnam" 
+           data-vi="Dịch vụ trang điểm chuyên nghiệp tại Đà Nẵng, Việt Nam">Professional Makeup Services in Da Nang, Vietnam</p>
+    </footer>
+
+    <script>
+        // Текущий язык
+        let currentLang = 'en';
+
+        // Функция смены языка
+        function changeLanguage(lang) {
+            currentLang = lang;
+            
+            // Обновляем активную кнопку
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Обновляем все элементы с переводом
+            document.querySelectorAll('[data-en]').forEach(element => {
+                const text = element.getAttribute(`data-${lang}`);
+                if (element.tagName === 'P' || element.tagName === 'H1' || element.tagName === 'H2' || element.tagName === 'H3' || element.tagName === 'A' || element.tagName === 'STRONG') {
+                    element.textContent = text;
+                } else {
+                    element.innerHTML = text;
+                }
+            });
+            
+            // Обновляем lightbox captions
+            updateLightboxCaptions();
+        }
+
+        // Обновление подписей в lightbox
+        function updateLightboxCaptions() {
+            images[0].caption = currentLang === 'en' ? 'Bridal Makeup' : 'Trang điểm cô dâu';
+            images[1].caption = currentLang === 'en' ? 'Evening Look' : 'Phong cách tối';
+            images[2].caption = currentLang === 'en' ? 'Natural Glam' : 'Vẻ đẹp tự nhiên';
+            images[3].caption = currentLang === 'en' ? 'Photoshoot Style' : 'Phong cách chụp ảnh';
+            images[4].caption = currentLang === 'en' ? 'Special Event' : 'Sự kiện đặc biệt';
+        }
+
+        // Меню
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
+
+        // Lightbox функционал
+        const images = [
+            { src: 'images_YMY/IMG_2210_Original.jpg', caption: 'Bridal Makeup' },
+            { src: 'images_YMY/IMG_7546.jpg', caption: 'Evening Look' },
+            { src: 'images_YMY/IMG_0462.JPG', caption: 'Natural Glam' },
+            { src: 'images_YMY/IMG_6010.JPG', caption: 'Photoshoot Style' },
+            { src: 'images_YMY/IMG_7548.jpg', caption: 'Special Event' }
+        ];
+
+        let currentIndex = 0;
+
+        function openLightbox(index) {
+            currentIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            
+            img.src = images[currentIndex].src;
+            caption.textContent = images[currentIndex].caption;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+                const lightbox = document.getElementById('lightbox');
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function changeImage(direction, event) {
+            event.stopPropagation();
+            currentIndex += direction;
+            
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            } else if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+            
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            img.src = images[currentIndex].src;
+            caption.textContent = images[currentIndex].caption;
+        }
+
+        // Закрытие по клавише Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const lightbox = document.getElementById('lightbox');
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            // Стрелки для навигации
+            if (event.key === 'ArrowLeft') {
+                changeImage(-1, event);
+            }
+            if (event.key === 'ArrowRight') {
+                changeImage(1, event);
+            }
+        });
+    </script>
+</body>
+</html>
