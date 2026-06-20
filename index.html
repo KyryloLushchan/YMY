@@ -1,988 +1,1487 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YMY Makeup Academy - Professional Bridal & Event Makeup in Da Nang</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #5a5a5a;
-            background: #fafafa;
-        }
-
-        /* Typography */
-        h1, h2, h3 {
-            font-weight: 300;
-            color: #2c2c2c;
-            letter-spacing: 2px;
-        }
-
-        h1 { font-size: 2.5rem; }
-        h2 { font-size: 2rem; margin-bottom: 1rem; }
-        h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
-
-        /* Header */
-        header {
-            background: #fff;
-            padding: 1rem 5%;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 400;
-            letter-spacing: 3px;
-            color: #d4a574;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #5a5a5a;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-            letter-spacing: 1px;
-        }
-
-        nav a:hover {
-            color: #d4a574;
-        }
-
-        /* Language Switcher */
-        .language-switcher {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .lang-btn {
-            padding: 0.3rem 0.5rem;
-            border: 2px solid #d4a574;
-            background: transparent;
-            cursor: pointer;
-            font-size: 1.5rem;
-            transition: all 0.3s;
-            border-radius: 4px;
-            line-height: 1;
-        }
-
-        .lang-btn.active {
-            background: #d4a574;
-            transform: scale(1.1);
-        }
-
-        .lang-btn:hover {
-            transform: scale(1.15);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23f5ebe0" width="1200" height="800"/></svg>');
-            background-size: cover;
-            margin-top: 60px;
-            position: relative;
-        }
-
-        /* Узкая полоска с фото над H1 */
-        .hero-image-strip {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-            opacity: 0.4;
-        }
-
-        .hero-image-strip img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            margin-top: 100px;
-        }
-
-        .hero-content h1 {
-            margin-bottom: 1rem;
-            font-size: 3rem;
-        }
-
-        .hero-tagline {
-            font-size: 1.2rem;
-            color: #7a7a7a;
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            border: 2px solid #d4a574;
-            background: #d4a574;
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: transparent;
-            color: #d4a574;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #d4a574;
-        }
-
-        .btn-secondary:hover {
-            background: #d4a574;
-            color: #fff;
-        }
-
-        /* Section Styles */
-        section {
-            padding: 5rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 2px;
-            background: #d4a574;
-            margin: 1rem auto 0;
-        }
-
-        /* About Section */
-        .about {
-            background: #fff;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            line-height: 1.8;
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: #fff;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #d4a574;
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding: 80px 20px;
-            background: #f8f8f8;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            aspect-ratio: 3/4;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .portfolio-item p {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-            color: white;
-            padding: 30px 20px 20px;
-            margin: 0;
-            font-size: 1.2rem;
-            font-weight: 500;
-            text-align: center;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .portfolio-item:hover p {
-            transform: translateY(0);
-        }
-
-        /* Lightbox для полноэкранного просмотра */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-content {
-            max-width: 85%;
-            max-height: 85%;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 85vh;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 40px;
-            font-size: 50px;
-            color: white;
-            cursor: pointer;
-            z-index: 10000;
-            transition: color 0.3s;
-        }
-
-        .lightbox-close:hover {
-            color: #d4a574;
-        }
-
-        .lightbox-prev,
-        .lightbox-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 40px;
-            color: white;
-            cursor: pointer;
-            padding: 20px;
-            user-select: none;
-            transition: color 0.3s;
-        }
-
-        .lightbox-prev:hover,
-        .lightbox-next:hover {
-            color: #d4a574;
-        }
-
-        .lightbox-prev {
-            left: 20px;
-        }
-
-        .lightbox-next {
-            right: 20px;
-        }
-
-        .lightbox-caption {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 1.2rem;
-            text-align: center;
-        }
-
-        /* Why Choose Us */
-        .why-us-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .why-item {
-            text-align: center;
-            padding: 1.5rem;
-        }
-
-        .why-icon {
-            font-size: 2rem;
-            color: #d4a574;
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: #fff;
-        }
-
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-info {
-            margin: 2rem 0;
-            line-height: 2;
-        }
-
-        .contact-info p {
-            margin: 0.5rem 0;
-        }
-
-        /* Social Links */
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .social-links a {
-            width: 50px;
-            height: 50px;
-            border: 2px solid #d4a574;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #d4a574;
-            text-decoration: none;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .social-links a:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .social-links a svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* Facebook - остается как есть при наведении */
-        .social-links a[title="Facebook"]:hover {
-            background: #1877f2;
-            border-color: #1877f2;
-            color: #fff;
-        }
-
-        /* Google Map - цветная метка на белом */
-        .social-links a[title="Google Map"]:hover {
-            background: #fff;
-            border-color: #d4a574;
-        }
-
-        .social-links a[title="Google Map"]:hover svg {
-            fill: url(#google-gradient);
-        }
-
-        /* Zalo - синяя Z на белом */
-        /* Zalo - синяя Z на белом */
-.social-links a.zalo-link {
-    border-color: #d4a574;
-    color: #d4a574;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YMY Makeup Academy — Editorial Bridal & Event Beauty in Da Nang</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Italiana&family=Inter:wght@200;300;400;500&family=Allura&display=swap" rel="stylesheet">
+
+<style>
+/* ================== TOKENS ================== */
+:root{
+  --ink:#161513;
+  --ink-soft:#2a2724;
+  --paper:#f5f1ea;
+  --paper-warm:#ede5d6;
+  --cream:#faf7f1;
+  --champagne:#c9a86b;
+  --champagne-deep:#a78348;
+  --rose:#c9837a;
+  --line:rgba(22,21,19,.18);
+  --line-soft:rgba(22,21,19,.08);
+
+  --f-display:"Italiana", serif;
+  --f-serif:"Cormorant Garamond", serif;
+  --f-script:"Allura", cursive;
+  --f-sans:"Inter", -apple-system, sans-serif;
+
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
 }
 
-.social-links a.zalo-link:hover {
-    background: #0068ff;
-    border-color: #0068ff;
-    color: #fff;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+a, a:visited, a:hover, a:active{color:inherit;text-decoration:none}
+
+body{
+  font-family:var(--f-sans);
+  font-weight:400;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  cursor:none;
 }
 
-.social-links a.zalo-link span {
-    transition: color 0.3s;
+/* Custom cursor */
+.cursor{
+  position:fixed;width:10px;height:10px;border-radius:50%;
+  background:var(--ink);pointer-events:none;z-index:99999;
+  transform:translate(-50%,-50%);
+  transition:transform .25s var(--ease), background .25s var(--ease), width .25s var(--ease), height .25s var(--ease);
+  mix-blend-mode:difference;
+}
+.cursor-ring{
+  position:fixed;width:36px;height:36px;border:1px solid var(--ink);border-radius:50%;
+  pointer-events:none;z-index:99998;
+  transform:translate(-50%,-50%);
+  transition:transform .35s var(--ease-out), opacity .3s, border-color .3s;
+  mix-blend-mode:difference;
+}
+.cursor.hover{width:6px;height:6px;background:var(--champagne)}
+.cursor-ring.hover{transform:translate(-50%,-50%) scale(1.6);border-color:var(--champagne)}
+@media (max-width:900px){
+  body{cursor:auto}
+  .cursor,.cursor-ring{display:none}
 }
 
-.social-links a.zalo-link:hover span {
-    color: #fff;
+/* Grain overlay */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
+  opacity:.07;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='.85'/></svg>");
 }
 
-        /* WhatsApp - зеленая как сейчас */
-        .social-links a.whatsapp-link {
-            border-color: #d4a574;
-            color: #d4a574;
-        }
+/* ================== SCROLL PROGRESS ================== */
+.scroll-bar{
+  position:fixed;top:0;left:0;height:2px;width:0;
+  background:linear-gradient(90deg,var(--champagne),var(--champagne-deep));
+  z-index:10001;transition:width .1s linear;
+}
 
-        .social-links a.whatsapp-link:hover {
-            background: #25d366;
-            border-color: #25d366;
-            color: #fff;
-        }
+/* ================== HEADER ================== */
+header{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  padding:1.5rem 3rem;
+  background:rgba(250,247,241,.7);
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid var(--line-soft);
+  transition:padding .4s var(--ease), background .4s var(--ease);
+}
+header.shrunk{padding:.85rem 3rem;background:rgba(250,247,241,.92)}
 
-        /* Footer */
-        footer {
-            background: #2c2c2c;
-            color: #fff;
-            text-align: center;
-            padding: 2rem 5%;
-            font-size: 0.9rem;
-        }
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  max-width:1400px;margin:0 auto;
+}
 
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
+.logo{
+  font-family:var(--f-display);
+  font-size:3.4rem;letter-spacing:.45em;
+  color:var(--ink);text-decoration:none;
+  position:relative;display:inline-block;
+  line-height:1;
+}
+.logo::after{
+  content:"";position:absolute;bottom:-6px;left:0;height:2px;width:0;
+  background:linear-gradient(90deg,var(--champagne),var(--champagne-deep));
+  transition:width .5s var(--ease);
+}
+.logo:hover::after{width:100%}
+.logo small{font-family:var(--f-sans);font-size:.72rem;letter-spacing:.5em;display:block;margin-top:7px;color:var(--champagne-deep);font-weight:500}
+header.shrunk .logo{font-size:2.5rem}
+header.shrunk .logo small{font-size:.62rem;margin-top:4px}
 
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: #d4a574;
-            transition: 0.3s;
-        }
+nav ul{display:flex;list-style:none;gap:2.5rem;align-items:center}
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.5rem; }
-            
-            .hero {
-                height: 80vh;
-            }
+nav ul li a{
+  font-family:var(--f-sans);
+  text-decoration:none;
+  color:var(--ink);
+  font-size:.7rem;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  font-weight:400;
+  position:relative;
+  padding:.5rem 0;
+  transition:color .3s;
+}
+nav ul li a::before{
+  content:"";position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  height:1px;width:0;background:var(--champagne);
+  transition:width .4s var(--ease);
+}
+nav ul li a:hover{color:var(--champagne-deep)}
+nav ul li a:hover::before{width:100%}
 
-            .hero-image-strip {
-                height: 100px;
-            }
+.language-switcher{display:flex;gap:.25rem}
+.lang-btn{
+  font-family:var(--f-sans);
+  background:transparent;border:none;
+  font-size:.7rem;letter-spacing:.25em;
+  padding:.4rem .7rem;cursor:none;color:var(--ink);
+  opacity:.4;transition:opacity .3s, color .3s;font-weight:400;
+}
+.lang-btn.active{opacity:1;color:var(--champagne-deep)}
+.lang-btn:hover{opacity:1}
 
-            .hero-content {
-                margin-top: 60px;
-            }
+.menu-toggle{display:none;background:none;border:none;cursor:none;padding:.5rem}
+.menu-toggle span{display:block;width:24px;height:1px;background:var(--ink);margin:6px 0;transition:.3s var(--ease)}
+.menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle.active span:nth-child(2){opacity:0}
+.menu-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-            .hero-content h1 {
-                font-size: 2rem;
-            }
+@media(max-width:900px){
+  header{padding:1rem 1.5rem}
+  header.shrunk{padding:.7rem 1.5rem}
+  .menu-toggle{display:block;z-index:1001}
+  nav ul{
+    position:fixed;inset:0;flex-direction:column;justify-content:center;align-items:center;
+    background:var(--cream);gap:2rem;
+    transform:translateX(100%);transition:transform .6s var(--ease);
+    padding:5rem 2rem;
+  }
+  nav ul.active{transform:translateX(0)}
+  nav ul li a{font-size:1rem}
+}
 
-            .menu-toggle {
-                display: flex;
-            }
+/* ================== HERO ================== */
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  align-items:center;
+  overflow:hidden;
+  padding:8rem 3rem 3rem;
+  gap:3rem;
+}
 
-            nav ul {
-                position: fixed;
-                top: 60px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 60px);
-                background: #fff;
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1rem;
-                transition: left 0.3s;
-            }
+.hero-text{position:relative;z-index:3;padding-left:2rem}
 
-            nav ul.active {
-                left: 0;
-            }
+.hero-eyebrow{
+  display:flex;align-items:center;gap:1rem;
+  font-family:var(--f-sans);
+  font-size:.7rem;letter-spacing:.45em;text-transform:uppercase;
+  color:var(--champagne-deep);margin-bottom:2rem;
+  opacity:0;animation:fadeUp 1s var(--ease-out) .3s forwards;
+}
+.hero-eyebrow::before{content:"";width:50px;height:1px;background:var(--champagne)}
 
-            section {
-                padding: 3rem 5%;
-            }
+.hero h1{
+  font-family:var(--f-display);
+  font-size:clamp(3.5rem,9vw,8rem);
+  line-height:.95;
+  letter-spacing:-.01em;
+  font-weight:400;
+  color:var(--ink);
+  margin-bottom:1.5rem;
+}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{
+  display:block;
+  transform:translateY(110%);
+  animation:slideUp 1.2s var(--ease-out) forwards;
+}
+.hero h1 .line:nth-child(1) span{animation-delay:.4s}
+.hero h1 .line:nth-child(2) span{animation-delay:.55s}
+.hero h1 .line:nth-child(3) span{animation-delay:.7s}
 
-            .services-grid,
-            .portfolio-grid,
-            .why-us-grid {
-                grid-template-columns: 1fr;
-            }
+.hero h1 em{
+  font-family:var(--f-script);
+  font-style:normal;
+  color:var(--champagne-deep);
+  font-size:.95em;
+  font-weight:400;
+}
 
-            .portfolio-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 20px;
-            }
+.hero-tagline{
+  font-family:var(--f-serif);
+  font-style:italic;
+  font-size:1.3rem;
+  color:var(--ink-soft);
+  margin-bottom:2.5rem;
+  max-width:480px;
+  opacity:0;animation:fadeUp 1s var(--ease-out) 1s forwards;
+}
 
-            .lightbox-content {
-                max-width: 95%;
-                max-height: 80%;
-            }
+.hero-meta{
+  display:flex;gap:2.5rem;align-items:center;margin-bottom:3rem;
+  opacity:0;animation:fadeUp 1s var(--ease-out) 1.1s forwards;
+}
+.hero-meta span{
+  font-family:var(--f-sans);font-size:.65rem;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--ink-soft);
+}
+.hero-meta .dot{width:4px;height:4px;border-radius:50%;background:var(--champagne);padding:0;margin:0}
 
-            .lightbox-content img {
-                max-height: 70vh;
-            }
+.cta-row{
+  display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;
+  opacity:0;animation:fadeUp 1s var(--ease-out) 1.2s forwards;
+}
 
-            .lightbox-prev,
-            .lightbox-next {
-                font-size: 30px;
-                padding: 10px;
-            }
+.btn{
+  font-family:var(--f-sans);
+  display:inline-flex;align-items:center;gap:1rem;
+  padding:1.2rem 2.2rem;
+  background:var(--ink);color:var(--cream);
+  text-decoration:none;
+  font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;
+  border:1px solid var(--ink);
+  position:relative;overflow:hidden;
+  transition:color .5s var(--ease);cursor:none;
+}
+.btn::before{
+  content:"";position:absolute;inset:0;background:var(--champagne);
+  transform:translateY(101%);transition:transform .5s var(--ease);z-index:0;
+}
+.btn:hover::before{transform:translateY(0)}
+.btn span,.btn svg{position:relative;z-index:1}
+.btn:hover{color:var(--ink)}
+.btn svg{transition:transform .4s var(--ease)}
+.btn:hover svg{transform:translateX(6px)}
 
-            .lightbox-close {
-                right: 20px;
-                font-size: 40px;
-                top: 10px;
-            }
+.btn-ghost{
+  background:transparent;color:var(--ink);border-color:var(--ink);
+}
+.btn-ghost::before{background:var(--ink)}
+.btn-ghost:hover{color:var(--cream)}
 
-            .language-switcher {
-                margin-top: 1rem;
-            }
+/* Hero image collage — scattered photo stack */
+.hero-visual{
+  position:relative;height:82vh;min-height:620px;
+}
+.hero-img{
+  position:absolute;overflow:hidden;
+  box-shadow:0 25px 70px rgba(22,21,19,.22), 0 4px 14px rgba(22,21,19,.12);
+  opacity:0;
+  animation:photoIn 1.3s var(--ease-out) forwards;
+  transition:rotate .7s var(--ease-out), box-shadow .5s var(--ease), z-index 0s .3s;
+  will-change:translate, rotate;
+}
+.hero-img:hover{
+  z-index:20;
+  rotate:0deg !important;
+  box-shadow:0 40px 100px rgba(22,21,19,.32), 0 6px 18px rgba(22,21,19,.18);
+  transition:rotate .5s var(--ease-out), box-shadow .5s var(--ease), z-index 0s;
+}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.5s var(--ease-out)}
+.hero-img:hover img{transform:scale(1.06)}
 
-            .lang-btn {
-                font-size: 1.3rem;
-            }
+.hero-img-1{
+  width:58%;height:62%;
+  top:3%;right:-1%;
+  rotate:-3deg;
+  animation-delay:.5s;
+  z-index:3;
+}
+.hero-img-2{
+  width:48%;height:46%;
+  bottom:2%;left:-3%;
+  rotate:5deg;
+  animation-delay:.7s;
+  z-index:6;
+}
+.hero-img-2 img{object-position:top center}
 
-            .social-links {
-                gap: 1rem;
-            }
-            
-            .social-links a {
-                width: 45px;
-                height: 45px;
-            }
-            
-            .social-links a svg {
-                width: 20px;
-                height: 20px;
-            }
-        }
-    </style>
+.hero-img-3{
+  width:38%;height:42%;
+  top:-2%;left:6%;
+  rotate:-8deg;
+  animation-delay:.9s;
+  z-index:4;
+}
+.hero-img-4{
+  width:36%;height:40%;
+  top:30%;left:26%;
+  rotate:6deg;
+  animation-delay:1.1s;
+  z-index:7;
+}
+.hero-img-5{
+  width:42%;height:44%;
+  bottom:5%;right:14%;
+  rotate:7deg;
+  animation-delay:1.3s;
+  z-index:5;
+}
+.hero-img-6{
+  width:32%;height:36%;
+  top:48%;right:-4%;
+  rotate:-9deg;
+  animation-delay:1.5s;
+  z-index:2;
+}
+
+@keyframes photoIn{
+  from{opacity:0; scale:.82}
+  to{opacity:1; scale:1}
+}
+
+.hero-img-cap{
+  position:absolute;bottom:-30px;right:0;
+  font-family:var(--f-script);
+  font-size:2rem;color:var(--champagne-deep);
+  transform:rotate(-4deg);
+  opacity:0;animation:fadeUp 1s var(--ease-out) 1.5s forwards;
+}
+
+/* Scroll indicator */
+.scroll-hint{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.8rem;
+  font-family:var(--f-sans);font-size:.6rem;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--ink-soft);
+  opacity:0;animation:fadeUp 1s var(--ease-out) 1.5s forwards;
+}
+.scroll-hint::after{
+  content:"";width:1px;height:50px;background:var(--ink-soft);
+  animation:scrollLine 2.2s ease-in-out infinite;transform-origin:top;
+}
+
+@keyframes slideUp{to{transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes revealRight{
+  0%{opacity:0;transform:translateX(80px) scale(.95)}
+  100%{opacity:1;transform:translateX(0) scale(1)}
+}
+@keyframes revealLeft{
+  0%{opacity:0;transform:translateX(-80px) scale(.95)}
+  100%{opacity:1;transform:translateX(0) scale(1)}
+}
+@keyframes scrollLine{
+  0%,100%{transform:scaleY(0);transform-origin:top}
+  50%{transform:scaleY(1)}
+  50.1%{transform-origin:bottom}
+  100%{transform:scaleY(0)}
+}
+
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr;padding:7rem 1.5rem 2rem;gap:3rem}
+  .hero-text{padding-left:0}
+  .hero-visual{height:65vh;min-height:460px}
+  .scroll-hint{display:none}
+  .hero-img-6{display:none}
+  .hero-img-3{width:42%;height:38%}
+  .hero-img-4{width:38%;height:34%;left:28%}
+  .hero-img-5{width:48%;height:42%;right:8%}
+}
+
+/* ================== MARQUEE ================== */
+.marquee{
+  background:var(--ink);color:var(--cream);
+  padding:1.4rem 0;overflow:hidden;
+  border-top:1px solid var(--line-soft);
+  border-bottom:1px solid var(--line-soft);
+}
+.marquee-track{
+  display:flex;gap:4rem;
+  animation:marquee 35s linear infinite;
+  white-space:nowrap;
+}
+.marquee span{
+  font-family:var(--f-display);
+  font-size:1.6rem;letter-spacing:.15em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:4rem;
+}
+.marquee span::after{
+  content:"✦";color:var(--champagne);font-size:1rem;
+}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ================== SECTION BASE ================== */
+section.block{
+  padding:8rem 3rem;
+  max-width:1400px;margin:0 auto;
+  position:relative;
+}
+.section-num{
+  font-family:var(--f-sans);font-size:.65rem;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--champagne-deep);
+  margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem;
+}
+.section-num::before{content:"";width:30px;height:1px;background:var(--champagne)}
+
+.section-title{
+  font-family:var(--f-display);
+  font-size:clamp(2.5rem,5.5vw,4.5rem);
+  line-height:1;font-weight:400;
+  margin-bottom:1.5rem;
+  letter-spacing:-.005em;
+}
+.section-title em{
+  font-family:var(--f-script);
+  font-style:normal;
+  color:var(--champagne-deep);
+}
+
+/* Reveal on scroll */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease-out), transform 1s var(--ease-out)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal.delay-1{transition-delay:.1s}
+.reveal.delay-2{transition-delay:.2s}
+.reveal.delay-3{transition-delay:.3s}
+.reveal.delay-4{transition-delay:.4s}
+
+/* ================== ABOUT ================== */
+.about{
+  display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;
+}
+.about-text p{
+  font-family:var(--f-serif);font-size:1.25rem;line-height:1.75;color:var(--ink-soft);
+  margin-bottom:1.5rem;font-weight:500;
+}
+.about-text p:first-of-type::first-letter{
+  font-family:var(--f-display);
+  font-size:4rem;float:left;
+  line-height:.85;padding:8px 12px 0 0;
+  color:var(--champagne-deep);
+}
+
+.about-image{position:relative;aspect-ratio:3/4;overflow:hidden}
+.about-image img{
+  width:100%;height:100%;object-fit:cover;object-position:top center;
+  transition:transform 1.5s var(--ease-out);
+}
+.about-image:hover img{transform:scale(1.05)}
+.about-image::after{
+  content:"";position:absolute;inset:0;
+  border:1px solid var(--cream);outline:2px solid var(--ink);
+  outline-offset:-15px;pointer-events:none;mix-blend-mode:difference;opacity:.3;
+}
+.about-stats{
+  display:flex;gap:3rem;margin-top:2.5rem;padding-top:2.5rem;
+  border-top:1px solid var(--line);
+}
+.stat strong{
+  font-family:var(--f-display);font-size:2.8rem;display:block;
+  color:var(--ink);font-weight:400;line-height:1;
+}
+.stat span{
+  font-family:var(--f-sans);font-size:.65rem;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--ink-soft);margin-top:.5rem;display:block;
+}
+
+@media(max-width:900px){
+  .about{grid-template-columns:1fr;gap:3rem}
+  section.block{padding:5rem 1.5rem}
+}
+
+/* ================== SERVICES ================== */
+.services-block{background:var(--paper);max-width:none;margin:0;padding:8rem 3rem;position:relative;overflow:hidden}
+.services-inner{max-width:1400px;margin:0 auto;position:relative;z-index:1}
+.services-head{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;
+  margin-bottom:5rem;
+}
+.services-head p{
+  font-family:var(--f-serif);font-size:1.15rem;color:var(--ink-soft);
+  font-style:italic;line-height:1.7;
+}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+
+.service-card{
+  position:relative;
+  aspect-ratio:3/4;
+  overflow:hidden;
+  background:var(--ink);
+  cursor:none;
+  isolation:isolate;
+}
+.service-card .service-bg{
+  position:absolute;inset:0;z-index:0;
+  background-size:cover;background-position:center;
+  opacity:.35;
+  filter:grayscale(.4);
+  transform:scale(1.05);
+  transition:opacity .7s var(--ease), transform 1.2s var(--ease-out), filter .7s var(--ease);
+}
+.service-card:hover .service-bg{opacity:.85;transform:scale(1.12);filter:grayscale(0)}
+
+.service-card::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg, rgba(22,21,19,.2) 0%, rgba(22,21,19,.85) 100%);
+  transition:background .6s var(--ease);
+}
+.service-card:hover::after{
+  background:linear-gradient(180deg, rgba(22,21,19,.1) 0%, rgba(22,21,19,.7) 100%);
+}
+
+.service-card .inner{
+  position:relative;z-index:2;
+  height:100%;padding:2rem;
+  display:flex;flex-direction:column;justify-content:space-between;
+  color:var(--cream);
+}
+
+.service-num{
+  font-family:var(--f-sans);font-size:.7rem;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--champagne);
+  display:flex;align-items:center;gap:.7rem;
+}
+.service-num::before{content:"";width:24px;height:1px;background:var(--champagne)}
+
+.service-card .service-body{
+  transform:translateY(0);transition:transform .5s var(--ease);
+}
+.service-card:hover .service-body{transform:translateY(-6px)}
+
+.service-title{
+  font-family:var(--f-display);
+  font-size:2rem;line-height:1.1;font-weight:400;
+  margin-bottom:1rem;color:var(--cream);
+  letter-spacing:.005em;
+}
+.service-desc{
+  font-family:var(--f-serif);font-style:italic;
+  font-size:1rem;line-height:1.5;
+  color:rgba(245,241,234,.78);
+  max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .6s var(--ease), opacity .5s var(--ease), margin .6s var(--ease);
+}
+.service-card:hover .service-desc{
+  max-height:200px;opacity:1;margin-top:.3rem;
+}
+
+.service-mark{
+  position:absolute;top:1.8rem;right:1.8rem;z-index:2;
+  width:36px;height:36px;border:1px solid rgba(245,241,234,.35);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--cream);font-family:var(--f-display);font-size:1.1rem;
+  transition:border-color .4s var(--ease), background .4s var(--ease), transform .4s var(--ease);
+}
+.service-card:hover .service-mark{
+  border-color:var(--champagne);background:var(--champagne);color:var(--ink);
+  transform:rotate(-45deg);
+}
+
+@media(max-width:1100px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .services-grid{
+    display:flex;overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    gap:1rem;scrollbar-width:none;-ms-overflow-style:none;
+    touch-action:pan-x;
+  }
+  .services-grid::-webkit-scrollbar{display:none}
+  .service-card{flex:0 0 80vw;scroll-snap-align:start;aspect-ratio:3/4}
+  .services-head{grid-template-columns:1fr;gap:1.5rem}
+  .service-desc{max-height:200px;opacity:1;margin-top:.3rem}
+}
+
+/* ================== PORTFOLIO ================== */
+.portfolio-block{padding:8rem 3rem;max-width:1400px;margin:0 auto}
+.portfolio-head{
+  display:flex;justify-content:space-between;align-items:end;
+  margin-bottom:4rem;flex-wrap:wrap;gap:2rem;
+}
+.portfolio-head p{
+  font-family:var(--f-serif);font-style:italic;font-size:1.1rem;
+  max-width:400px;color:var(--ink-soft);
+}
+
+.portfolio-slider-wrap{position:relative}
+
+.portfolio-grid{
+  display:flex;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  gap:1.5rem;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  scroll-behavior:smooth;
+  padding-bottom:4px;
+  touch-action:pan-x;
+}
+.portfolio-grid::-webkit-scrollbar{display:none}
+
+.portfolio-item{
+  flex:0 0 calc(33.333% - 1rem);
+  min-width:220px;
+  aspect-ratio:3/4;
+  scroll-snap-align:start;
+  position:relative;overflow:hidden;cursor:none;
+  background:var(--ink);
+  transition:transform .6s var(--ease);
+}
+
+.portfolio-item img{
+  width:100%;height:100%;object-fit:cover;object-position:top center;display:block;
+  transition:transform 1.4s var(--ease-out), filter .6s var(--ease);
+  filter:grayscale(.15);
+}
+.portfolio-item:hover img{transform:scale(1.08);filter:grayscale(0)}
+
+.portfolio-item .meta{
+  position:absolute;left:1.5rem;bottom:1.5rem;right:1.5rem;
+  color:var(--cream);z-index:2;
+  transform:translateY(20px);opacity:0;
+  transition:opacity .5s var(--ease), transform .5s var(--ease);
+}
+.portfolio-item:hover .meta{opacity:1;transform:translateY(0)}
+@media(hover:none){
+  .portfolio-item .meta{opacity:1;transform:translateY(0)}
+  .portfolio-item::after{opacity:1}
+}
+.portfolio-item .meta-num{
+  font-family:var(--f-sans);font-size:.6rem;letter-spacing:.4em;
+  color:var(--champagne);text-transform:uppercase;margin-bottom:.5rem;
+}
+.portfolio-item .meta-title{
+  font-family:var(--f-display);font-size:1.6rem;line-height:1.1;
+}
+.portfolio-item::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(22,21,19,.65) 0%,rgba(22,21,19,0) 50%);
+  opacity:0;transition:opacity .5s var(--ease);
+}
+.portfolio-item:hover::after{opacity:1}
+
+/* Slider arrows */
+.slider-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:48px;height:48px;border-radius:50%;
+  background:var(--cream);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-display);font-size:1.8rem;color:var(--ink);
+  cursor:none;z-index:10;line-height:1;
+  box-shadow:0 4px 20px rgba(22,21,19,.12);
+  transition:background .3s var(--ease), color .3s var(--ease), box-shadow .3s;
+}
+.slider-btn:hover{background:var(--ink);color:var(--cream);box-shadow:0 8px 30px rgba(22,21,19,.22)}
+.slider-prev{left:-24px}
+.slider-next{right:-24px}
+
+/* Dots */
+.slider-dots{display:flex;justify-content:center;gap:.5rem;margin-top:2rem}
+.slider-dot{
+  width:8px;height:8px;border-radius:4px;
+  background:var(--line);border:none;cursor:none;padding:0;
+  transition:background .3s, width .3s;
+}
+.slider-dot.active{background:var(--champagne-deep);width:24px}
+
+@media(max-width:1100px){
+  .slider-prev{left:-16px}
+  .slider-next{right:-16px}
+}
+@media(max-width:900px){
+  .portfolio-item{flex:0 0 calc(50% - .75rem)}
+}
+@media(max-width:600px){
+  .portfolio-block{padding:5rem 1.5rem}
+  .portfolio-item{flex:0 0 82vw}
+  .slider-btn{display:none}
+}
+
+/* ================== WHY US ================== */
+.why-block{
+  background:var(--ink);color:var(--cream);
+  max-width:none;margin:0;padding:8rem 3rem;
+  position:relative;overflow:hidden;
+}
+.why-block::before{
+  content:"YMY";position:absolute;
+  font-family:var(--f-display);font-size:35vw;
+  color:var(--ink-soft);opacity:.4;
+  bottom:-8vw;right:-3vw;line-height:1;
+  pointer-events:none;letter-spacing:-.02em;
+}
+.why-inner{max-width:1400px;margin:0 auto;position:relative;z-index:1}
+
+.why-block .section-num{color:var(--champagne)}
+.why-block .section-num::before{background:var(--champagne)}
+.why-block .section-title{color:var(--cream)}
+
+.why-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+  margin-top:5rem;
+  background:var(--ink-soft);
+  border:1px solid var(--ink-soft);
+}
+.why-item{
+  background:var(--ink);padding:3rem 2rem;
+  position:relative;overflow:hidden;
+  transition:background .5s var(--ease);
+  cursor:none;
+}
+.why-item::before{
+  content:"";position:absolute;top:0;left:0;width:0;height:1px;
+  background:var(--champagne);transition:width .8s var(--ease-out);
+}
+.why-item:hover::before{width:100%}
+.why-item:hover{background:#1f1c19}
+
+.why-num{
+  font-family:var(--f-display);font-size:3rem;color:var(--champagne);
+  line-height:1;margin-bottom:2rem;font-weight:400;
+}
+.why-item h3{
+  font-family:var(--f-display);font-size:1.5rem;font-weight:400;
+  margin-bottom:1rem;color:var(--cream);letter-spacing:0;
+}
+.why-item p{
+  font-family:var(--f-serif);font-style:italic;
+  color:rgba(245,241,234,.7);font-size:1rem;line-height:1.6;
+}
+
+@media(max-width:900px){
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .why-grid{grid-template-columns:1fr}
+}
+
+/* ================== CONTACT ================== */
+.contact-block{
+  padding:8rem 3rem;max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:1.2fr 1fr;gap:5rem;align-items:center;
+}
+
+.contact-text .section-title{margin-bottom:2rem}
+.contact-text > p{
+  font-family:var(--f-serif);font-size:1.3rem;line-height:1.6;
+  color:var(--ink-soft);font-style:italic;margin-bottom:3rem;max-width:520px;
+}
+
+.contact-info{margin-bottom:2.5rem}
+.contact-info-row{
+  display:flex;gap:2rem;align-items:flex-start;
+  padding:1.5rem 0;border-bottom:1px solid var(--line);
+}
+.contact-info-row:first-child{border-top:1px solid var(--line)}
+.contact-info-label{
+  font-family:var(--f-sans);font-size:.65rem;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--champagne-deep);
+  min-width:100px;padding-top:4px;
+}
+.contact-info-value{
+  font-family:var(--f-serif);font-size:1.15rem;color:var(--ink);line-height:1.5;
+}
+.contact-info-value a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line);transition:border-color .3s}
+.contact-info-value a:hover{border-color:var(--champagne)}
+
+.social-links{display:flex;gap:.8rem;flex-wrap:wrap}
+.social-links a{
+  width:54px;height:54px;border-radius:50%;border:none;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;text-decoration:none;
+  position:relative;overflow:hidden;cursor:none;
+  transition:transform .3s var(--ease), filter .3s var(--ease);
+}
+.social-links a::before{display:none}
+.social-links a:hover{transform:scale(1.12);filter:brightness(1.2)}
+.social-links a[title="Facebook"]{background:#1877F2}
+.social-links a[title="Google Map"]{background:conic-gradient(from 135deg,#4285f4 0%,#34a853 25%,#fbbc05 50%,#ea4335 75%,#4285f4 100%)}
+.social-links a[title="Zalo"]{background:#0068FF}
+.social-links a[title="WhatsApp"]{background:#25D366}
+.social-links a svg, .social-links a span{position:relative;z-index:1}
+.social-links a span{font-weight:700;font-size:1.1rem;font-family:var(--f-sans);color:#fff}
+
+.contact-card{
+  background:var(--paper);padding:3rem 2.5rem;
+  position:relative;
+  border:1px solid var(--line);
+}
+.contact-card::before{
+  content:"";position:absolute;top:-1px;left:-1px;right:-1px;height:4px;
+  background:linear-gradient(90deg,var(--champagne),var(--champagne-deep),var(--rose));
+}
+.contact-card-title{
+  font-family:var(--f-script);font-size:2.5rem;
+  color:var(--champagne-deep);margin-bottom:.5rem;line-height:1;
+}
+.contact-card-sub{
+  font-family:var(--f-display);font-size:1.5rem;margin-bottom:2rem;
+}
+.contact-card-list{list-style:none;display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem}
+.contact-card-list li{
+  font-family:var(--f-serif);font-size:1.05rem;color:var(--ink-soft);
+  display:flex;align-items:center;gap:.8rem;
+}
+.contact-card-list li::before{
+  content:"✦";color:var(--champagne);font-size:.7rem;
+}
+
+@media(max-width:900px){
+  .contact-block{grid-template-columns:1fr;gap:3rem}
+}
+
+/* ================== FOOTER ================== */
+footer{
+  background:var(--ink);color:var(--cream);
+  padding:5rem 3rem 2rem;
+  position:relative;
+}
+.footer-inner{
+  max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;
+  padding-bottom:4rem;border-bottom:1px solid var(--ink-soft);
+}
+.footer-brand .footer-logo{
+  font-family:var(--f-display);font-size:2.5rem;letter-spacing:.3em;
+  margin-bottom:1rem;
+}
+.footer-brand p{
+  font-family:var(--f-serif);font-style:italic;
+  color:rgba(245,241,234,.6);max-width:400px;font-size:1rem;
+}
+.footer-col h4{
+  font-family:var(--f-sans);font-size:.65rem;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--champagne);margin-bottom:1.5rem;font-weight:400;
+}
+.footer-col a, .footer-col p{
+  display:block;color:rgba(245,241,234,.7);text-decoration:none;
+  font-family:var(--f-serif);font-size:1rem;
+  margin-bottom:.6rem;transition:color .3s;
+}
+.footer-col a:hover{color:var(--champagne)}
+
+.footer-bottom{
+  max-width:1400px;margin:0 auto;padding-top:2rem;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+  font-family:var(--f-sans);font-size:.7rem;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(245,241,234,.4);
+}
+
+@media(max-width:900px){
+  .footer-inner{grid-template-columns:1fr;gap:2.5rem}
+  footer{padding:4rem 1.5rem 2rem}
+}
+
+/* ================== LIGHTBOX ================== */
+.lightbox{
+  display:none;position:fixed;inset:0;
+  background:rgba(22,21,19,.96);
+  z-index:10000;
+  justify-content:center;align-items:center;padding:2rem;
+  opacity:0;transition:opacity .4s var(--ease);
+  backdrop-filter:blur(10px);
+}
+.lightbox.active{display:flex;opacity:1}
+.lightbox-content{position:relative;max-width:90%;max-height:90%}
+.lightbox-content img{max-width:100%;max-height:85vh;display:block;animation:zoomIn .6s var(--ease-out)}
+@keyframes zoomIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next{
+  position:absolute;color:var(--cream);cursor:none;
+  font-family:var(--f-display);user-select:none;
+  transition:color .3s, transform .3s;
+}
+.lightbox-close{top:2rem;right:2.5rem;font-size:2.5rem}
+.lightbox-prev,.lightbox-next{top:50%;transform:translateY(-50%);font-size:2.5rem;padding:1rem}
+.lightbox-prev{left:2rem}
+.lightbox-next{right:2rem}
+.lightbox-close:hover,.lightbox-prev:hover,.lightbox-next:hover{color:var(--champagne)}
+.lightbox-prev:hover{transform:translate(-6px,-50%)}
+.lightbox-next:hover{transform:translate(6px,-50%)}
+
+.lightbox-caption{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  font-family:var(--f-display);font-size:1.3rem;color:var(--cream);
+  letter-spacing:.2em;text-transform:uppercase;
+}
+
+/* ================== MOBILE TWEAKS ================== */
+@media(max-width:560px){
+  .hero h1{font-size:3.5rem}
+  .marquee span{font-size:1.2rem}
+  section.block, .services-block, .why-block, .portfolio-block, .contact-block{padding:5rem 1.5rem}
+}
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">YMY</div>
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul id="navMenu">
-                <li><a href="#home" data-en="Home" data-vi="Trang chủ">Home</a></li>
-                <li><a href="#about" data-en="About" data-vi="Giới thiệu">About</a></li>
-                <li><a href="#services" data-en="Services" data-vi="Dịch vụ">Services</a></li>
-                <li><a href="#portfolio" data-en="Portfolio" data-vi="Hình ảnh">Portfolio</a></li>
-                <li><a href="#contact" data-en="Contact" data-vi="Liên hệ">Contact</a></li>
-                <li class="language-switcher">
-                    <button class="lang-btn active" onclick="changeLanguage('en')" title="English">🇬🇧</button>
-                    <button class="lang-btn" onclick="changeLanguage('vi')" title="Tiếng Việt">🇻🇳</button>
-                </li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-image-strip">
-            <img src="images_YMY/hero-bg.JPG" alt="YMY Makeup">
-        </div>
-        
-        <div class="hero-content">
-            <h1 data-en="YMY Makeup Academy" data-vi="YMY Makeup Academy">YMY Makeup Academy</h1>
-            <p class="hero-tagline" data-en="Where Beauty Meets Elegance" data-vi="Nơi vẻ đẹp gặp gỡ sự thanh lịch">Where Beauty Meets Elegance</p>
-            <p style="margin-bottom: 2rem;" data-en="Professional Bridal & Event Makeup in Da Nang" data-vi="Trang điểm cô dâu và sự kiện chuyên nghiệp tại Đà Nẵng">Professional Bridal & Event Makeup in Da Nang</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn" data-en="Book Appointment" data-vi="Đặt lịch hẹn">Book Appointment</a>
-            </div>
-        </div>
-    </section>
+<!-- Cursor -->
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2 class="section-title" data-en="About YMY" data-vi="Giới thiệu YMY">About YMY</h2>
-        <div class="about-content">
-            <p data-en="YMY Makeup Academy is a premier beauty destination in Da Nang, dedicated to enhancing your natural beauty for life's most precious moments. With years of expertise in bridal and event makeup, we believe every client deserves a personalized, luxurious experience." 
-               data-vi="Học viện trang điểm YMY là điểm đến làm đẹp hàng đầu tại Đà Nẵng, chuyên nâng cao vẻ đẹp tự nhiên của bạn cho những khoảnh khắc quý giá nhất trong cuộc đời. Với nhiều năm kinh nghiệm trong lĩnh vực trang điểm cô dâu và sự kiện, chúng tôi tin rằng mỗi khách hàng đều xứng đáng có được trải nghiệm sang trọng và cá nhân hóa.">
-                YMY Makeup Academy is a premier beauty destination in Da Nang, dedicated to enhancing your natural beauty for life's most precious moments. With years of expertise in bridal and event makeup, we believe every client deserves a personalized, luxurious experience.
-            </p>
-            <p style="margin-top: 1.5rem;" 
-               data-en="Our studio combines professional artistry with high-quality cosmetics to create timeless, elegant looks. Whether you're preparing for your wedding day, a special event, or pursuing a career in makeup artistry, YMY is your trusted partner in beauty." 
-               data-vi="Studio của chúng tôi kết hợp nghệ thuật chuyên nghiệp với mỹ phẩm cao cấp để tạo ra những vẻ đẹp thanh lịch, vượt thời gian. Cho dù bạn đang chuẩn bị cho ngày cưới, một sự kiện đặc biệt, hay theo đuổi sự nghiệp nghệ thuật trang điểm, YMY là đối tác tin cậy của bạn trong lĩnh vực làm đẹp.">
-                Our studio combines professional artistry with high-quality cosmetics to create timeless, elegant looks. Whether you're preparing for your wedding day, a special event, or pursuing a career in makeup artistry, YMY is your trusted partner in beauty.
-            </p>
-        </div>
-    </section>
+<!-- Scroll progress -->
+<div class="scroll-bar" id="scrollBar"></div>
 
-    <!-- Services Section -->
-    <section id="services">
-        <h2 class="section-title" data-en="Our Services" data-vi="Dịch vụ của chúng tôi">Our Services</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">💍</div>
-                <h3 data-en="Bridal Makeup" data-vi="Trang điểm cô dâu">Bridal Makeup</h3>
-                <p data-en="Flawless, long-lasting makeup for your special day. Trial sessions available." 
-                   data-vi="Trang điểm hoàn hảo, lâu trôi cho ngày trọng đại của bạn. Có dịch vụ thử makeup.">
-                    Flawless, long-lasting makeup for your special day. Trial sessions available.
-                </p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">✨</div>
-                <h3 data-en="Event Makeup" data-vi="Trang điểm sự kiện">Event Makeup</h3>
-                <p data-en="Elegant looks for parties, galas, and celebrations of all kinds." 
-                   data-vi="Vẻ ngoài thanh lịch cho các bữa tiệc, dạ hội và mọi loại lễ kỷ niệm.">
-                    Elegant looks for parties, galas, and celebrations of all kinds.
-                </p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">📸</div>
-                <h3 data-en="Photoshoot Makeup" data-vi="Trang điểm chụp ảnh">Photoshoot Makeup</h3>
-                <p data-en="Camera-ready makeup designed for professional photography." 
-                   data-vi="Trang điểm chuyên nghiệp được thiết kế cho chụp ảnh.">
-                    Camera-ready makeup designed for professional photography.
-                </p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🚗</div>
-                <h3 data-en="On-Location Service" data-vi="Dịch vụ tại nhà">On-Location Service</h3>
-                <p data-en="We bring our expertise to your preferred location for ultimate convenience." 
-                   data-vi="Chúng tôi mang chuyên môn đến địa điểm bạn mong muốn để thuận tiện nhất.">
-                    We bring our expertise to your preferred location for ultimate convenience.
-                </p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🎓</div>
-                <h3 data-en="Makeup Academy" data-vi="Học viện trang điểm">Makeup Academy</h3>
-                <p data-en="Professional makeup courses for aspiring artists. Learn from the best." 
-                   data-vi="Khóa học trang điểm chuyên nghiệp cho các nghệ sĩ tương lai. Học từ những người giỏi nhất.">
-                    Professional makeup courses for aspiring artists. Learn from the best.
-                </p>
-            </div>
-        </div>
-    </section>
+<!-- Header -->
+<header id="header">
+  <nav>
+    <a href="#home" class="logo" data-hover>YMY<small>Makeup Academy</small></a>
+    <button class="menu-toggle" id="menuToggle" data-hover>
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="navMenu">
+      <li><a href="#about" data-hover data-en="About" data-vi="Giới thiệu">About</a></li>
+      <li><a href="#services" data-hover data-en="Services" data-vi="Dịch vụ">Services</a></li>
+      <li><a href="#portfolio" data-hover data-en="Portfolio" data-vi="Portfolio">Portfolio</a></li>
+      <li><a href="#why" data-hover data-en="Why YMY" data-vi="Vì sao YMY">Why YMY</a></li>
+      <li><a href="#contact" data-hover data-en="Contact" data-vi="Liên hệ">Contact</a></li>
+      <li class="language-switcher">
+        <button class="lang-btn active" data-lang="en" data-hover>EN</button>
+        <button class="lang-btn" data-lang="vi" data-hover>VI</button>
+      </li>
+    </ul>
+  </nav>
+</header>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <h2 class="section-title" data-en="Our Work" data-vi="Tác phẩm của chúng tôi">Our Work</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item" onclick="openLightbox(0)">
-                <img src="images_YMY/IMG_2210_Original.jpg" alt="Bridal Makeup">
-                <p data-en="Bridal Makeup" data-vi="Trang điểm cô dâu">Bridal Makeup</p>
-            </div>
-            <div class="portfolio-item" onclick="openLightbox(1)">
-                <img src="images_YMY/IMG_0462.JPG" alt="Natural Glam">
-                <p data-en="Natural Glam" data-vi="Vẻ đẹp tự nhiên">Natural Glam</p>
-            </div>
-            <div class="portfolio-item" onclick="openLightbox(2)">
-                <img src="images_YMY/IMG_7546.jpg" alt="Evening Look">
-                <p data-en="Evening Look" data-vi="Phong cách tối">Evening Look</p>
-            </div>
-            <div class="portfolio-item" onclick="openLightbox(3)">
-                <img src="images_YMY/IMG_7548.jpg" alt="Special Event">
-                <p data-en="Special Event" data-vi="Sự kiện đặc biệt">Special Event</p>
-            </div>
-            <div class="portfolio-item" onclick="openLightbox(4)">
-                <img src="images_YMY/IMG_6010.JPG" alt="Photoshoot Style">
-                <p data-en="Photoshoot Style" data-vi="Phong cách chụp ảnh">Photoshoot Style</p>
-            </div>  
-        </div>
-    </section>
+<!-- Hero -->
+<section id="home" class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow" data-en="Da Nang · Vietnam · Est. 2025" data-vi="Đà Nẵng · Việt Nam · Est. 2025">Da Nang · Vietnam · Est. 2025</div>
+    <h1>
+      <span class="line"><span data-en="Beauty," data-vi="Vẻ đẹp,">Beauty,</span></span>
+      <span class="line"><span data-en="Crafted with" data-vi="Tạo nên với">Crafted with</span></span>
+      <span class="line"><span><em data-en="élégance" data-vi="thanh lịch">élégance</em></span></span>
+    </h1>
+    <p class="hero-tagline" data-en="A modern atelier for bridal, editorial and event makeup in the heart of Da Nang." data-vi="Studio trang điểm hiện đại dành cho cô dâu, editorial và sự kiện ngay tại trung tâm Đà Nẵng.">
+      A modern atelier for bridal, editorial and event makeup in the heart of Da Nang.
+    </p>
+    <div class="hero-meta">
+      <span data-en="Bridal" data-vi="Cô dâu">Bridal</span>
+      <span class="dot"></span>
+      <span data-en="Editorial" data-vi="Editorial">Editorial</span>
+      <span class="dot"></span>
+      <span data-en="Academy" data-vi="Học viện">Academy</span>
+    </div>
+    <div class="cta-row">
+      <a href="#contact" class="btn" data-hover>
+        <span data-en="Book an appointment" data-vi="Đặt lịch hẹn">Book an appointment</span>
+        <svg width="18" height="10" viewBox="0 0 18 10" fill="none"><path d="M1 5h16M13 1l4 4-4 4" stroke="currentColor" stroke-width="1.2"/></svg>
+      </a>
+      <a href="#portfolio" class="btn btn-ghost" data-hover>
+        <span data-en="View portfolio" data-vi="Xem portfolio">View portfolio</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-img hero-img-1"><img src="images_YMY/IMG_2210_Original.jpg" alt="YMY bridal"></div>
+    <div class="hero-img hero-img-2"><img src="images_YMY/IMG_9382.JPG" alt="YMY editorial"></div>
+    <div class="hero-img hero-img-3"><img src="images_YMY/IMG_9381.JPG" alt="YMY portrait"></div>
+    <div class="hero-img hero-img-4"><img src="images_YMY/IMG_7546.jpg" alt="YMY evening look"></div>
+    <div class="hero-img hero-img-5"><img src="images_YMY/IMG_0462.JPG" alt="YMY event makeup"></div>
+    <div class="hero-img hero-img-6"><img src="images_YMY/IMG_6010.JPG" alt="YMY photoshoot"></div>
+    <div class="hero-img-cap" data-en="effortless." data-vi="tự nhiên.">effortless.</div>
+  </div>
+  <div class="scroll-hint" data-en="Scroll" data-vi="Cuộn">Scroll</div>
+</section>
 
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-        <span class="lightbox-prev" onclick="changeImage(-1, event)">&#10094;</span>
-        <div class="lightbox-content">
-            <img id="lightbox-img" src="" alt="">
-            <div class="lightbox-caption" id="lightbox-caption"></div>
-        </div>
-        <span class="lightbox-next" onclick="changeImage(1, event)">&#10095;</span>
+<!-- Marquee -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span data-en="Bridal Makeup" data-vi="Trang điểm cô dâu">Bridal Makeup</span>
+    <span data-en="Event Beauty" data-vi="Trang điểm sự kiện">Event Beauty</span>
+    <span data-en="Editorial" data-vi="Editorial">Editorial</span>
+    <span data-en="Photoshoot" data-vi="Chụp ảnh">Photoshoot</span>
+    <span data-en="Academy" data-vi="Học viện">Academy</span>
+    <span data-en="On-Location" data-vi="Tại nhà">On-Location</span>
+    <span data-en="Bridal Makeup" data-vi="Trang điểm cô dâu">Bridal Makeup</span>
+    <span data-en="Event Beauty" data-vi="Trang điểm sự kiện">Event Beauty</span>
+    <span data-en="Editorial" data-vi="Editorial">Editorial</span>
+    <span data-en="Photoshoot" data-vi="Chụp ảnh">Photoshoot</span>
+    <span data-en="Academy" data-vi="Học viện">Academy</span>
+    <span data-en="On-Location" data-vi="Tại nhà">On-Location</span>
+  </div>
+</div>
+
+<!-- About -->
+<section id="about" class="block about">
+  <div class="about-text">
+    <div class="section-num reveal" data-en="01 — The atelier" data-vi="01 — Studio">01 — The atelier</div>
+    <h2 class="section-title reveal" data-en="An <em>intimate</em> studio for <em>unforgettable</em> moments." data-vi="Một studio <em>thân mật</em> cho những khoảnh khắc <em>khó quên</em>.">
+      An <em>intimate</em> studio for <em>unforgettable</em> moments.
+    </h2>
+    <div class="about-text reveal delay-1">
+      <p data-en="YMY Makeup Academy is a premier beauty destination in Da Nang, dedicated to enhancing your natural beauty for life's most precious moments. With years of expertise in bridal and event makeup, we believe every client deserves a personalised, luxurious experience." data-vi="YMY Makeup Academy là điểm đến làm đẹp hàng đầu tại Đà Nẵng, chuyên nâng cao vẻ đẹp tự nhiên của bạn cho những khoảnh khắc quý giá nhất. Với nhiều năm kinh nghiệm trong trang điểm cô dâu và sự kiện, chúng tôi tin mỗi khách hàng đều xứng đáng có trải nghiệm sang trọng và cá nhân hoá.">
+        YMY Makeup Academy is a premier beauty destination in Da Nang, dedicated to enhancing your natural beauty for life's most precious moments. With years of expertise in bridal and event makeup, we believe every client deserves a personalised, luxurious experience.
+      </p>
+      <p data-en="Our studio combines professional artistry with high-quality cosmetics to create timeless, elegant looks — whether you're preparing for your wedding day, a special event, or pursuing a career in makeup artistry." data-vi="Studio của chúng tôi kết hợp nghệ thuật chuyên nghiệp với mỹ phẩm cao cấp để tạo nên những vẻ đẹp thanh lịch, vượt thời gian — dù bạn đang chuẩn bị cho ngày cưới, một sự kiện đặc biệt, hay theo đuổi sự nghiệp trang điểm.">
+        Our studio combines professional artistry with high-quality cosmetics to create timeless, elegant looks — whether you're preparing for your wedding day, a special event, or pursuing a career in makeup artistry.
+      </p>
+    </div>
+    <div class="about-stats reveal delay-2">
+      <div class="stat"><strong>500+</strong><span data-en="Brides styled" data-vi="Cô dâu đã làm">Brides styled</span></div>
+      <div class="stat"><strong>13</strong><span data-en="Pro tools" data-vi="Dụng cụ chuyên nghiệp">Pro tools</span></div>
+      <div class="stat"><strong>5★</strong><span data-en="Client rating" data-vi="Đánh giá khách">Client rating</span></div>
+    </div>
+  </div>
+  <div class="about-image reveal delay-1">
+    <img src="images_YMY/IMG_9381.JPG" alt="YMY bridal portrait">
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services" class="services-block">
+  <div class="services-inner">
+    <div class="services-head">
+      <div>
+        <div class="section-num reveal" data-en="02 — Services" data-vi="02 — Dịch vụ">02 — Services</div>
+        <h2 class="section-title reveal" data-en="Every look, <em>tailored</em>." data-vi="Mỗi diện mạo, <em>riêng biệt</em>.">Every look, <em>tailored</em>.</h2>
+      </div>
+      <p class="reveal delay-1" data-en="From wedding mornings to magazine spreads — a curated menu of services designed to make you feel exactly like yourself, only more so." data-vi="Từ buổi sáng cưới đến trang bìa tạp chí — danh mục dịch vụ được tuyển chọn để bạn cảm thấy chính là mình, chỉ rạng rỡ hơn.">
+        From wedding mornings to magazine spreads — a curated menu of services designed to make you feel exactly like yourself, only more so.
+      </p>
     </div>
 
-    <!-- Why Choose Us Section -->
-    <section id="why-us">
-        <h2 class="section-title" data-en="Why Choose YMY" data-vi="Tại sao chọn YMY">Why Choose YMY</h2>
-        <div class="why-us-grid">
-            <div class="why-item">
-                <div class="why-icon">👑</div>
-                <h3 data-en="Expert Artists" data-vi="Nghệ sĩ chuyên nghiệp">Expert Artists</h3>
-                <p data-en="Years of professional experience in bridal and event makeup" 
-                   data-vi="Nhiều năm kinh nghiệm chuyên nghiệp trong trang điểm cô dâu và sự kiện">
-                    Years of professional experience in bridal and event makeup
-                </p>
-            </div>
-            <div class="why-item">
-                <div class="why-icon">💄</div>
-                <h3 data-en="Premium Products" data-vi="Sản phẩm cao cấp">Premium Products</h3>
-                <p data-en="Only high-quality, trusted cosmetic brands for flawless results" 
-                   data-vi="Chỉ sử dụng các thương hiệu mỹ phẩm uy tín, chất lượng cao cho kết quả hoàn hảo">
-                    Only high-quality, trusted cosmetic brands for flawless results
-                </p>
-            </div>
-            <div class="why-item">
-                <div class="why-icon">🌸</div>
-                <h3 data-en="Natural Elegance" data-vi="Vẻ đẹp thanh lịch">Natural Elegance</h3>
-                <p data-en="Enhancing your natural beauty with timeless, sophisticated styles" 
-                   data-vi="Nâng cao vẻ đẹp tự nhiên của bạn với phong cách tinh tế, vượt thời gian">
-                    Enhancing your natural beauty with timeless, sophisticated styles
-                </p>
-            </div>
-            <div class="why-item">
-                <div class="why-icon">📍</div>
-                <h3 data-en="Flexible Service" data-vi="Dịch vụ linh hoạt">Flexible Service</h3>
-                <p data-en="Studio appointments and on-location services available" 
-                   data-vi="Có dịch vụ tại studio và tận nơi">
-                    Studio appointments and on-location services available
-                </p>
-            </div>
+    <div class="services-grid">
+      <div class="service-card reveal" data-hover>
+        <div class="service-bg" style="background-image:url('images_YMY/IMG_2210_Original.jpg')"></div>
+        <div class="service-mark">+</div>
+        <div class="inner">
+          <div class="service-num">N° 01</div>
+          <div class="service-body">
+            <h3 class="service-title" data-en="Bridal Makeup" data-vi="Trang điểm cô dâu">Bridal Makeup</h3>
+            <p class="service-desc" data-en="Flawless, long-lasting makeup for your wedding day. Trial sessions available." data-vi="Lớp trang điểm hoàn hảo, lâu trôi cho ngày cưới. Có buổi thử trước.">Flawless, long-lasting makeup for your wedding day. Trial sessions available.</p>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2 class="section-title" data-en="Get In Touch" data-vi="Liên hệ với chúng tôi">Get In Touch</h2>
-        <div class="contact-content">
-            <p data-en="Ready to book your appointment or learn more about our services?" 
-               data-vi="Sẵn sàng đặt lịch hẹn hoặc tìm hiểu thêm về dịch vụ của chúng tôi?">
-                Ready to book your appointment or learn more about our services?
-            </p>
-            <div class="contact-info">
-                <p><strong data-en="📍 Address:" data-vi="📍 Địa chỉ:">📍 Address:</strong><br>56 Võ Văn Kiệt, Sơn Trà, Đà Nẵng</p>
-                <p><strong data-en="📱 Phone / WhatsApp / Zalo:" data-vi="📱 Điện thoại / WhatsApp / Zalo:">📱 Phone / WhatsApp / Zalo:</strong><br>+84 0865 292 379</p>
-            </div>
-            
-            <!-- SVG Gradient для Google Maps -->
-            <svg width="0" height="0" style="position: absolute;">
-                <defs>
-                    <linearGradient id="google-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#4285f4;stop-opacity:1" />
-                        <stop offset="33%" style="stop-color:#34a853;stop-opacity:1" />
-                        <stop offset="66%" style="stop-color:#fbbc05;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#ea4335;stop-opacity:1" />
-                    </linearGradient>
-                </defs>
-            </svg>
-
-            <div class="social-links">
-                <a href="https://www.facebook.com/share/1Kb7cdPf9S/?mibextid=wwXIfr" target="_blank" title="Facebook">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
-                </a>
-                <a href="https://maps.app.goo.gl/8bBptKRvDAn51fMZ6?g_st=ic" target="_blank" title="Google Map">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                    </svg>
-                </a>
-               <a href="https://zalo.me/0865292379" target="_blank" title="Zalo" class="zalo-link">
-    <span style="font-size: 20px; font-weight: bold; font-family: Arial, sans-serif;">Z</span>
-</a>
-                <a href="https://wa.me/840865292379" target="_blank" title="WhatsApp" class="whatsapp-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
-                </a>
-            </div>
+      <div class="service-card reveal delay-1" data-hover>
+        <div class="service-bg" style="background-image:url('images_YMY/IMG_0462.JPG')"></div>
+        <div class="service-mark">+</div>
+        <div class="inner">
+          <div class="service-num">N° 02</div>
+          <div class="service-body">
+            <h3 class="service-title" data-en="Event Makeup" data-vi="Trang điểm sự kiện">Event Makeup</h3>
+            <p class="service-desc" data-en="Elegant looks for parties, galas and celebrations of every kind." data-vi="Phong cách thanh lịch cho tiệc, dạ hội và mọi sự kiện.">Elegant looks for parties, galas and celebrations of every kind.</p>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Footer -->
-    <footer>
-        <p data-en="&copy; 2025 YMY Makeup Academy. All rights reserved." 
-           data-vi="&copy; 2025 Học viện trang điểm YMY. Bảo lưu mọi quyền.">&copy; 2025 YMY Makeup Academy. All rights reserved.</p>
-        <p data-en="Professional Makeup Services in Da Nang, Vietnam" 
-           data-vi="Dịch vụ trang điểm chuyên nghiệp tại Đà Nẵng, Việt Nam">Professional Makeup Services in Da Nang, Vietnam</p>
-    </footer>
+      <div class="service-card reveal delay-2" data-hover>
+        <div class="service-bg" style="background-image:url('images_YMY/IMG_6010.JPG')"></div>
+        <div class="service-mark">+</div>
+        <div class="inner">
+          <div class="service-num">N° 03</div>
+          <div class="service-body">
+            <h3 class="service-title" data-en="Photoshoot Makeup" data-vi="Trang điểm chụp ảnh">Photoshoot Makeup</h3>
+            <p class="service-desc" data-en="Camera-ready makeup designed for editorial and professional photography." data-vi="Trang điểm chuẩn camera dành cho editorial và nhiếp ảnh chuyên nghiệp.">Camera-ready makeup designed for editorial and professional photography.</p>
+          </div>
+        </div>
+      </div>
 
-    <script>
-        let currentLang = 'en';
+      <div class="service-card reveal delay-1" data-hover>
+        <div class="service-bg" style="background-image:url('images_YMY/IMG_7546.jpg')"></div>
+        <div class="service-mark">+</div>
+        <div class="inner">
+          <div class="service-num">N° 04</div>
+          <div class="service-body">
+            <h3 class="service-title" data-en="On-Location Service" data-vi="Dịch vụ tận nơi">On-Location Service</h3>
+            <p class="service-desc" data-en="We bring our atelier to you — at home, hotel, or venue of your choice." data-vi="Chúng tôi mang studio đến với bạn — tại nhà, khách sạn hoặc địa điểm bạn chọn.">We bring our atelier to you — at home, hotel, or venue of your choice.</p>
+          </div>
+        </div>
+      </div>
 
-        function changeLanguage(lang) {
-            currentLang = lang;
-            
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            document.querySelectorAll('[data-en]').forEach(element => {
-                const text = element.getAttribute(`data-${lang}`);
-                if (element.tagName === 'P' || element.tagName === 'H1' || element.tagName === 'H2' || element.tagName === 'H3' || element.tagName === 'A' || element.tagName === 'STRONG') {
-                    element.textContent = text;
-                } else {
-                    element.innerHTML = text;
-                }
-            });
-            
-            updateLightboxCaptions();
-        }
+      <div class="service-card reveal delay-2" data-hover>
+        <div class="service-bg" style="background-image:url('images_YMY/IMG_9381.JPG');background-position:top center"></div>
+        <div class="service-mark">+</div>
+        <div class="inner">
+          <div class="service-num">N° 05</div>
+          <div class="service-body">
+            <h3 class="service-title" data-en="Makeup Academy" data-vi="Học viện trang điểm">Makeup Academy</h3>
+            <p class="service-desc" data-en="Professional makeup courses for aspiring artists. Learn from the best." data-vi="Khoá học trang điểm chuyên nghiệp dành cho nghệ sĩ tương lai. Học từ những người giỏi nhất.">Professional makeup courses for aspiring artists. Learn from the best.</p>
+          </div>
+        </div>
+      </div>
 
-        function updateLightboxCaptions() {
-            images[0].caption = currentLang === 'en' ? 'Bridal Makeup' : 'Trang điểm cô dâu';
-            images[1].caption = currentLang === 'en' ? 'Natural Glam' : 'Vẻ đẹp tự nhiên';
-            images[2].caption = currentLang === 'en' ? 'Evening Look' : 'Phong cách tối';
-            images[3].caption = currentLang === 'en' ? 'Special Event' : 'Sự kiện đặc biệt';
-            images[4].caption = currentLang === 'en' ? 'Photoshoot Style' : 'Phong cách chụp ảnh';
-        }
+      <div class="service-card reveal delay-3" data-hover>
+        <div class="service-bg" style="background-image:url('images_YMY/hero-bg.JPG')"></div>
+        <div class="service-mark">+</div>
+        <div class="inner">
+          <div class="service-num">N° 06</div>
+          <div class="service-body">
+            <h3 class="service-title" data-en="Studio Visit" data-vi="Tham quan studio">Studio Visit</h3>
+            <p class="service-desc" data-en="Stop by our atelier in Sơn Trà — consultations and appointments by booking." data-vi="Ghé studio của chúng tôi tại Sơn Trà — tư vấn và đặt lịch trước.">Stop by our atelier in Sơn Trà — consultations and appointments by booking.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        function toggleMenu() {
-            const menu = document.getElementById('navMenu');
-            menu.classList.toggle('active');
-        }
+<!-- Portfolio -->
+<section id="portfolio" class="portfolio-block">
+  <div class="portfolio-head">
+    <div>
+      <div class="section-num reveal" data-en="03 — Portfolio" data-vi="03 — Portfolio">03 — Portfolio</div>
+      <h2 class="section-title reveal" data-en="Selected <em>work</em>." data-vi="Tác phẩm <em>chọn lọc</em>.">Selected <em>work</em>.</h2>
+    </div>
+    <p class="reveal delay-1" data-en="A small edit from our recent bridal, editorial and event sittings. Click any image to view." data-vi="Tuyển chọn nhỏ từ các buổi makeup cô dâu, editorial và sự kiện gần đây. Nhấn vào ảnh để xem.">
+      A small edit from our recent bridal, editorial and event sittings. Click any image to view.
+    </p>
+  </div>
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    document.getElementById('navMenu').classList.remove('active');
-                }
-            });
-        });
+  <div class="portfolio-slider-wrap">
+    <button class="slider-btn slider-prev" data-hover aria-label="Previous">‹</button>
+    <div class="portfolio-grid" id="portfolioGrid">
+      <div class="portfolio-item" data-index="0" data-hover>
+        <img src="images_YMY/IMG_2210_Original.jpg" alt="Bridal Makeup">
+        <div class="meta">
+          <div class="meta-num">N° 01</div>
+          <div class="meta-title" data-en="Bridal Makeup" data-vi="Trang điểm cô dâu">Bridal Makeup</div>
+        </div>
+      </div>
+      <div class="portfolio-item" data-index="1" data-hover>
+        <img src="images_YMY/IMG_9381.JPG" alt="Natural Glam">
+        <div class="meta">
+          <div class="meta-num">N° 02</div>
+          <div class="meta-title" data-en="Natural Glam" data-vi="Vẻ đẹp tự nhiên">Natural Glam</div>
+        </div>
+      </div>
+      <div class="portfolio-item" data-index="2" data-hover>
+        <img src="images_YMY/IMG_7546.jpg" alt="Evening Look">
+        <div class="meta">
+          <div class="meta-num">N° 03</div>
+          <div class="meta-title" data-en="Evening Look" data-vi="Phong cách dạ tiệc">Evening Look</div>
+        </div>
+      </div>
+      <div class="portfolio-item" data-index="3" data-hover>
+        <img src="images_YMY/IMG_0462.JPG" alt="Special Event">
+        <div class="meta">
+          <div class="meta-num">N° 04</div>
+          <div class="meta-title" data-en="Special Event" data-vi="Sự kiện đặc biệt">Special Event</div>
+        </div>
+      </div>
+      <div class="portfolio-item" data-index="4" data-hover>
+        <img src="images_YMY/IMG_6010.JPG" alt="Photoshoot Style">
+        <div class="meta">
+          <div class="meta-num">N° 05</div>
+          <div class="meta-title" data-en="Photoshoot Style" data-vi="Phong cách chụp ảnh">Photoshoot Style</div>
+        </div>
+      </div>
+      <div class="portfolio-item" data-index="5" data-hover>
+        <img src="images_YMY/IMG_9382.JPG" alt="Bridal Look">
+        <div class="meta">
+          <div class="meta-num">N° 06</div>
+          <div class="meta-title" data-en="Bridal Look" data-vi="Phong cách cô dâu">Bridal Look</div>
+        </div>
+      </div>
+    </div>
+    <button class="slider-btn slider-next" data-hover aria-label="Next">›</button>
+  </div>
+  <div class="slider-dots" id="sliderDots"></div>
+</section>
 
-        const images = [
-            { src: 'images_YMY/IMG_2210_Original.jpg', caption: 'Bridal Makeup' },
-            { src: 'images_YMY/IMG_0462.JPG', caption: 'Natural Glam' },
-            { src: 'images_YMY/IMG_7546.jpg', caption: 'Evening Look' },
-            { src: 'images_YMY/IMG_7548.jpg', caption: 'Special Event' },
-            { src: 'images_YMY/IMG_6010.JPG', caption: 'Photoshoot Style' }
-        ];
+<!-- Why YMY -->
+<section id="why" class="why-block">
+  <div class="why-inner">
+    <div class="section-num reveal" data-en="04 — Why YMY" data-vi="04 — Vì sao YMY">04 — Why YMY</div>
+    <h2 class="section-title reveal" data-en="The <em>YMY</em> difference." data-vi="Khác biệt <em>YMY</em>.">The <em>YMY</em> difference.</h2>
 
-        let currentIndex = 0;
+    <div class="why-grid">
+      <div class="why-item reveal" data-hover>
+        <div class="why-num">01</div>
+        <h3 data-en="Expert Artists" data-vi="Nghệ sĩ chuyên nghiệp">Expert Artists</h3>
+        <p data-en="Years of professional experience in bridal and event makeup." data-vi="Nhiều năm kinh nghiệm trong trang điểm cô dâu và sự kiện.">Years of professional experience in bridal and event makeup.</p>
+      </div>
+      <div class="why-item reveal delay-1" data-hover>
+        <div class="why-num">02</div>
+        <h3 data-en="Premium Products" data-vi="Sản phẩm cao cấp">Premium Products</h3>
+        <p data-en="Only high-quality, trusted cosmetic brands for flawless results." data-vi="Chỉ sử dụng các thương hiệu mỹ phẩm cao cấp, đáng tin cậy cho kết quả hoàn hảo.">Only high-quality, trusted cosmetic brands for flawless results.</p>
+      </div>
+      <div class="why-item reveal delay-2" data-hover>
+        <div class="why-num">03</div>
+        <h3 data-en="Natural Elegance" data-vi="Vẻ đẹp thanh lịch">Natural Elegance</h3>
+        <p data-en="Enhancing your natural beauty with timeless, sophisticated styles." data-vi="Tôn lên vẻ đẹp tự nhiên với phong cách tinh tế, vượt thời gian.">Enhancing your natural beauty with timeless, sophisticated styles.</p>
+      </div>
+      <div class="why-item reveal delay-3" data-hover>
+        <div class="why-num">04</div>
+        <h3 data-en="Flexible Service" data-vi="Dịch vụ linh hoạt">Flexible Service</h3>
+        <p data-en="Studio appointments and on-location services available." data-vi="Có dịch vụ tại studio và tận nơi.">Studio appointments and on-location services available.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        function openLightbox(index) {
-            currentIndex = index;
-            const lightbox = document.getElementById('lightbox');
-            const img = document.getElementById('lightbox-img');
-            const caption = document.getElementById('lightbox-caption');
-            
-            img.src = images[currentIndex].src;
-            caption.textContent = images[currentIndex].caption;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+<!-- Contact -->
+<section id="contact" class="contact-block">
+  <div class="contact-text">
+    <div class="section-num reveal" data-en="05 — Contact" data-vi="05 — Liên hệ">05 — Contact</div>
+    <h2 class="section-title reveal" data-en="Let's create something <em>beautiful</em>." data-vi="Hãy cùng tạo nên điều <em>đẹp đẽ</em>.">Let's create something <em>beautiful</em>.</h2>
+    <p class="reveal delay-1" data-en="Ready to book your appointment or learn more about our services? We'd love to hear from you." data-vi="Sẵn sàng đặt lịch hẹn hoặc tìm hiểu thêm về dịch vụ của chúng tôi? Chúng tôi rất mong được nghe từ bạn.">
+      Ready to book your appointment or learn more about our services? We'd love to hear from you.
+    </p>
 
-        function closeLightbox(event) {
-            if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
-                const lightbox = document.getElementById('lightbox');
-                lightbox.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        }
+    <div class="contact-info reveal delay-2">
+      <div class="contact-info-row">
+        <div class="contact-info-label" data-en="Address" data-vi="Địa chỉ">Address</div>
+        <div class="contact-info-value">56 Võ Văn Kiệt<br>Sơn Trà, Đà Nẵng</div>
+      </div>
+      <div class="contact-info-row">
+        <div class="contact-info-label" data-en="Phone" data-vi="Điện thoại">Phone</div>
+        <div class="contact-info-value"><a href="tel:+84865292379">+84 0865 292 379</a><br><span style="font-size:.8rem;color:var(--ink-soft)">WhatsApp · Zalo</span></div>
+      </div>
+      <div class="contact-info-row">
+        <div class="contact-info-label" data-en="Hours" data-vi="Giờ mở">Hours</div>
+        <div class="contact-info-value" data-en="By appointment, daily" data-vi="Theo lịch hẹn, hằng ngày">By appointment, daily</div>
+      </div>
+    </div>
 
-        function changeImage(direction, event) {
-            event.stopPropagation();
-            currentIndex += direction;
-            
-            if (currentIndex < 0) {
-                currentIndex = images.length - 1;
-            } else if (currentIndex >= images.length) {
-                currentIndex = 0;
-            }
-            
-            const img = document.getElementById('lightbox-img');
-            const caption = document.getElementById('lightbox-caption');
-            img.src = images[currentIndex].src;
-            caption.textContent = images[currentIndex].caption;
-        }
+    <svg width="0" height="0" style="position:absolute">
+      <defs>
+        <linearGradient id="google-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#4285f4"/>
+          <stop offset="33%" style="stop-color:#34a853"/>
+          <stop offset="66%" style="stop-color:#fbbc05"/>
+          <stop offset="100%" style="stop-color:#ea4335"/>
+        </linearGradient>
+      </defs>
+    </svg>
 
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                const lightbox = document.getElementById('lightbox');
-                lightbox.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-            if (event.key === 'ArrowLeft') {
-                changeImage(-1, event);
-            }
-            if (event.key === 'ArrowRight') {
-                changeImage(1, event);
-            }
-        });
-    </script>
+    <div class="social-links reveal delay-3">
+      <a href="https://www.facebook.com/share/1Kb7cdPf9S/?mibextid=wwXIfr" target="_blank" title="Facebook" data-hover>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://maps.app.goo.gl/8bBptKRvDAn51fMZ6?g_st=ic" target="_blank" title="Google Map" data-hover>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      </a>
+      <a href="https://zalo.me/0865292379" target="_blank" title="Zalo" data-hover><span>Z</span></a>
+      <a href="https://wa.me/840865292379" target="_blank" title="WhatsApp" data-hover>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-card reveal delay-2">
+    <div class="contact-card-title" data-en="Bonjour!" data-vi="Xin chào!">Bonjour!</div>
+    <div class="contact-card-sub" data-en="Studio appointments" data-vi="Lịch hẹn studio">Studio appointments</div>
+    <ul class="contact-card-list">
+      <li data-en="Free 15-minute consultation" data-vi="Tư vấn miễn phí 15 phút">Free 15-minute consultation</li>
+      <li data-en="Bridal trial sessions" data-vi="Buổi thử cho cô dâu">Bridal trial sessions</li>
+      <li data-en="Group bookings welcome" data-vi="Đặt nhóm được chào đón">Group bookings welcome</li>
+      <li data-en="Custom course curriculum" data-vi="Giáo trình tuỳ chỉnh">Custom course curriculum</li>
+    </ul>
+    <a href="tel:+84865292379" class="btn" data-hover>
+      <span data-en="Call us now" data-vi="Gọi ngay">Call us now</span>
+      <svg width="18" height="10" viewBox="0 0 18 10" fill="none"><path d="M1 5h16M13 1l4 4-4 4" stroke="currentColor" stroke-width="1.2"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">YMY</div>
+      <p data-en="A modern atelier for bridal, editorial and event makeup in the heart of Da Nang." data-vi="Studio trang điểm hiện đại dành cho cô dâu, editorial và sự kiện ngay tại trung tâm Đà Nẵng.">
+        A modern atelier for bridal, editorial and event makeup in the heart of Da Nang.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Navigate" data-vi="Điều hướng">Navigate</h4>
+      <a href="#about" data-hover data-en="About" data-vi="Giới thiệu">About</a>
+      <a href="#services" data-hover data-en="Services" data-vi="Dịch vụ">Services</a>
+      <a href="#portfolio" data-hover data-en="Portfolio" data-vi="Portfolio">Portfolio</a>
+      <a href="#contact" data-hover data-en="Contact" data-vi="Liên hệ">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-en="Studio" data-vi="Studio">Studio</h4>
+      <p>56 Võ Văn Kiệt</p>
+      <p>Sơn Trà, Đà Nẵng</p>
+      <p>+84 0865 292 379</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-en="© 2025 YMY Makeup Academy. All rights reserved." data-vi="© 2025 YMY Makeup Academy. Bảo lưu mọi quyền.">© 2025 YMY Makeup Academy. All rights reserved.</span>
+    <span data-en="Crafted in Da Nang" data-vi="Tạo nên tại Đà Nẵng">Crafted in Da Nang</span>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <span class="lightbox-close" data-hover>×</span>
+  <span class="lightbox-prev" data-hover>‹</span>
+  <div class="lightbox-content">
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+  <span class="lightbox-next" data-hover>›</span>
+</div>
+
+<script>
+/* ========== Custom cursor ========== */
+const cursor = document.querySelector('.cursor');
+const ring = document.querySelector('.cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+function loop(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);}
+loop();
+document.querySelectorAll('[data-hover], a, button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.classList.add('hover');ring.classList.add('hover');});
+  el.addEventListener('mouseleave',()=>{cursor.classList.remove('hover');ring.classList.remove('hover');});
+});
+
+/* ========== Header shrink + scroll bar ========== */
+const header = document.getElementById('header');
+const scrollBar = document.getElementById('scrollBar');
+window.addEventListener('scroll',()=>{
+  const y = window.scrollY;
+  header.classList.toggle('shrunk', y > 60);
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  scrollBar.style.width = ((y/h)*100)+'%';
+});
+
+/* ========== Reveal on scroll ========== */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ========== Mobile menu ========== */
+const toggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
+toggle.addEventListener('click',()=>{
+  toggle.classList.toggle('active');
+  navMenu.classList.toggle('active');
+});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});navMenu.classList.remove('active');toggle.classList.remove('active');}
+  });
+});
+
+/* ========== Language switcher ========== */
+let currentLang = 'en';
+function changeLanguage(lang){
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    const txt = el.getAttribute('data-'+lang);
+    if(txt!=null){
+      // Allow inline tags like <em> in section titles
+      if(el.classList.contains('section-title') || el.classList.contains('logo')) el.innerHTML = txt;
+      else el.innerHTML = txt;
+    }
+  });
+}
+document.querySelectorAll('.lang-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>changeLanguage(btn.dataset.lang));
+});
+
+/* ========== Lightbox ========== */
+const images = [
+  {src:'images_YMY/IMG_2210_Original.jpg', en:'Bridal Makeup', vi:'Trang điểm cô dâu'},
+  {src:'images_YMY/IMG_9381.JPG', en:'Natural Glam', vi:'Vẻ đẹp tự nhiên'},
+  {src:'images_YMY/IMG_7546.jpg', en:'Evening Look', vi:'Phong cách dạ tiệc'},
+  {src:'images_YMY/IMG_0462.JPG', en:'Special Event', vi:'Sự kiện đặc biệt'},
+  {src:'images_YMY/IMG_6010.JPG', en:'Photoshoot Style', vi:'Phong cách chụp ảnh'},
+  {src:'images_YMY/IMG_9382.JPG', en:'Bridal Look', vi:'Phong cách cô dâu'},
+];
+let currentIndex = 0;
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxCap = document.getElementById('lightbox-caption');
+
+function openLightbox(i){
+  currentIndex = i;
+  lightboxImg.src = images[i].src;
+  lightboxCap.textContent = images[i][currentLang];
+  lightbox.classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){lightbox.classList.remove('active');document.body.style.overflow='auto';}
+function changeImage(d){
+  currentIndex = (currentIndex + d + images.length) % images.length;
+  lightboxImg.src = images[currentIndex].src;
+  lightboxCap.textContent = images[currentIndex][currentLang];
+}
+
+document.querySelectorAll('.portfolio-item').forEach(item=>{
+  let startX=0;
+  item.addEventListener('pointerdown',e=>{startX=e.clientX;});
+  item.addEventListener('click',e=>{
+    if(Math.abs(e.clientX-startX)>8)return;
+    openLightbox(parseInt(item.dataset.index));
+  });
+});
+document.querySelector('.lightbox-close').addEventListener('click',closeLightbox);
+document.querySelector('.lightbox-prev').addEventListener('click',e=>{e.stopPropagation();changeImage(-1);});
+document.querySelector('.lightbox-next').addEventListener('click',e=>{e.stopPropagation();changeImage(1);});
+lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox();});
+document.addEventListener('keydown',e=>{
+  if(!lightbox.classList.contains('active'))return;
+  if(e.key==='Escape')closeLightbox();
+  if(e.key==='ArrowLeft')changeImage(-1);
+  if(e.key==='ArrowRight')changeImage(1);
+});
+
+/* ========== Portfolio Slider ========== */
+const portfolioGrid = document.getElementById('portfolioGrid');
+const sliderDotsEl = document.getElementById('sliderDots');
+const pItems = portfolioGrid.querySelectorAll('.portfolio-item');
+
+pItems.forEach((_,i)=>{
+  const dot = document.createElement('button');
+  dot.className = 'slider-dot'+(i===0?' active':'');
+  dot.addEventListener('click',()=>{
+    portfolioGrid.scrollTo({left:pItems[i].offsetLeft,behavior:'smooth'});
+  });
+  sliderDotsEl.appendChild(dot);
+});
+
+function getPW(){return pItems[0]?pItems[0].offsetWidth+24:0}
+
+function updateDotState(){
+  const idx=Math.min(Math.round(portfolioGrid.scrollLeft/getPW()),pItems.length-1);
+  sliderDotsEl.querySelectorAll('.slider-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+}
+
+portfolioGrid.addEventListener('scroll',updateDotState,{passive:true});
+
+document.querySelector('.slider-prev').addEventListener('click',()=>{
+  portfolioGrid.scrollBy({left:-getPW(),behavior:'smooth'});
+});
+document.querySelector('.slider-next').addEventListener('click',()=>{
+  portfolioGrid.scrollBy({left:getPW(),behavior:'smooth'});
+});
+
+/* ========== Subtle parallax on scattered hero photos ========== */
+const heroImgs = document.querySelectorAll('.hero-img');
+const heroSpeeds = [0.08, -0.05, -0.11, 0.06, -0.07, 0.13];
+window.addEventListener('scroll',()=>{
+  const y = window.scrollY;
+  if(y < window.innerHeight){
+    heroImgs.forEach((el,i)=>{
+      const s = heroSpeeds[i] ?? 0.05;
+      el.style.translate = `0 ${y*s}px`;
+    });
+  }
+});
+</script>
 </body>
 </html>
