@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -125,11 +125,11 @@ nav ul li a:hover::before{width:100%}
 .lang-btn{
   font-family:var(--f-sans);
   background:transparent;border:none;
-  font-size:.7rem;letter-spacing:.25em;
+  font-size:.78rem;letter-spacing:.25em;
   padding:.4rem .7rem;cursor:pointer;color:var(--ink);
-  opacity:.4;transition:opacity .3s, color .3s;font-weight:400;
+  opacity:.5;transition:opacity .3s, color .3s;font-weight:700;
 }
-.lang-btn.active{opacity:1;color:var(--champagne-deep)}
+.lang-btn.active{opacity:1;color:var(--champagne-deep);font-weight:800}
 .lang-btn:hover{opacity:1}
 
 .menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
@@ -930,8 +930,8 @@ footer{
       <li><a href="#why" data-hover data-en="Why YMY" data-vi="Vì sao YMY">Why YMY</a></li>
       <li><a href="#contact" data-hover data-en="Contact" data-vi="Liên hệ">Contact</a></li>
       <li class="language-switcher">
-        <button class="lang-btn active" data-lang="en" data-hover>EN</button>
-        <button class="lang-btn" data-lang="vi" data-hover>VI</button>
+        <button class="lang-btn" data-lang="en" data-hover>EN</button>
+        <button class="lang-btn active" data-lang="vi" data-hover>VI</button>
       </li>
     </ul>
   </nav>
@@ -1356,14 +1356,14 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 });
 
 /* ========== Language switcher ========== */
-let currentLang = 'en';
+let currentLang = 'vi';
 function changeLanguage(lang){
   currentLang = lang;
+  document.documentElement.lang = lang;
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
   document.querySelectorAll('[data-en]').forEach(el=>{
     const txt = el.getAttribute('data-'+lang);
     if(txt!=null){
-      // Allow inline tags like <em> in section titles
       if(el.classList.contains('section-title') || el.classList.contains('logo')) el.innerHTML = txt;
       else el.innerHTML = txt;
     }
@@ -1372,6 +1372,7 @@ function changeLanguage(lang){
 document.querySelectorAll('.lang-btn').forEach(btn=>{
   btn.addEventListener('click',()=>changeLanguage(btn.dataset.lang));
 });
+changeLanguage('vi');
 
 /* ========== Lightbox ========== */
 const images = [
