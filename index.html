@@ -46,30 +46,10 @@ body{
   line-height:1.6;
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
-  cursor:none;
+  cursor:auto;
 }
 
-/* Custom cursor */
-.cursor{
-  position:fixed;width:10px;height:10px;border-radius:50%;
-  background:var(--ink);pointer-events:none;z-index:99999;
-  transform:translate(-50%,-50%);
-  transition:transform .25s var(--ease), background .25s var(--ease), width .25s var(--ease), height .25s var(--ease);
-  mix-blend-mode:difference;
-}
-.cursor-ring{
-  position:fixed;width:36px;height:36px;border:1px solid var(--ink);border-radius:50%;
-  pointer-events:none;z-index:99998;
-  transform:translate(-50%,-50%);
-  transition:transform .35s var(--ease-out), opacity .3s, border-color .3s;
-  mix-blend-mode:difference;
-}
-.cursor.hover{width:6px;height:6px;background:var(--champagne)}
-.cursor-ring.hover{transform:translate(-50%,-50%) scale(1.6);border-color:var(--champagne)}
-@media (max-width:900px){
-  body{cursor:auto}
-  .cursor,.cursor-ring{display:none}
-}
+.cursor,.cursor-ring{display:none}
 
 /* Grain overlay */
 body::before{
@@ -146,13 +126,13 @@ nav ul li a:hover::before{width:100%}
   font-family:var(--f-sans);
   background:transparent;border:none;
   font-size:.7rem;letter-spacing:.25em;
-  padding:.4rem .7rem;cursor:none;color:var(--ink);
+  padding:.4rem .7rem;cursor:pointer;color:var(--ink);
   opacity:.4;transition:opacity .3s, color .3s;font-weight:400;
 }
 .lang-btn.active{opacity:1;color:var(--champagne-deep)}
 .lang-btn:hover{opacity:1}
 
-.menu-toggle{display:none;background:none;border:none;cursor:none;padding:.5rem}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
 .menu-toggle span{display:block;width:24px;height:1px;background:var(--ink);margin:6px 0;transition:.3s var(--ease)}
 .menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .menu-toggle.active span:nth-child(2){opacity:0}
@@ -256,7 +236,7 @@ nav ul li a:hover::before{width:100%}
   font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;
   border:1px solid var(--ink);
   position:relative;overflow:hidden;
-  transition:color .5s var(--ease);cursor:none;
+  transition:color .5s var(--ease);cursor:pointer;
 }
 .btn::before{
   content:"";position:absolute;inset:0;background:var(--champagne);
@@ -517,7 +497,7 @@ section.block{
   aspect-ratio:3/4;
   overflow:hidden;
   background:var(--ink);
-  cursor:none;
+  cursor:pointer;
   isolation:isolate;
 }
 .service-card .service-bg{
@@ -635,7 +615,7 @@ section.block{
   min-width:220px;
   aspect-ratio:3/4;
   scroll-snap-align:start;
-  position:relative;overflow:hidden;cursor:none;
+  position:relative;overflow:hidden;cursor:pointer;
   background:var(--ink);
   transition:transform .6s var(--ease);
 }
@@ -679,7 +659,7 @@ section.block{
   background:var(--cream);border:1px solid var(--line);
   display:flex;align-items:center;justify-content:center;
   font-family:var(--f-display);font-size:1.8rem;color:var(--ink);
-  cursor:none;z-index:10;line-height:1;
+  cursor:pointer;z-index:10;line-height:1;
   box-shadow:0 4px 20px rgba(22,21,19,.12);
   transition:background .3s var(--ease), color .3s var(--ease), box-shadow .3s;
 }
@@ -691,7 +671,7 @@ section.block{
 .slider-dots{display:flex;justify-content:center;gap:.5rem;margin-top:2rem}
 .slider-dot{
   width:8px;height:8px;border-radius:4px;
-  background:var(--line);border:none;cursor:none;padding:0;
+  background:var(--line);border:none;cursor:pointer;padding:0;
   transition:background .3s, width .3s;
 }
 .slider-dot.active{background:var(--champagne-deep);width:24px}
@@ -738,7 +718,7 @@ section.block{
   background:var(--ink);padding:3rem 2rem;
   position:relative;overflow:hidden;
   transition:background .5s var(--ease);
-  cursor:none;
+  cursor:pointer;
 }
 .why-item::before{
   content:"";position:absolute;top:0;left:0;width:0;height:1px;
@@ -801,7 +781,7 @@ section.block{
   width:54px;height:54px;border-radius:50%;border:none;
   display:flex;align-items:center;justify-content:center;
   color:#fff;text-decoration:none;
-  position:relative;overflow:hidden;cursor:none;
+  position:relative;overflow:hidden;cursor:pointer;
   transition:transform .3s var(--ease), filter .3s var(--ease);
 }
 .social-links a::before{display:none}
@@ -901,7 +881,7 @@ footer{
 .lightbox-close,
 .lightbox-prev,
 .lightbox-next{
-  position:absolute;color:var(--cream);cursor:none;
+  position:absolute;color:var(--cream);cursor:pointer;
   font-family:var(--f-display);user-select:none;
   transition:color .3s, transform .3s;
 }
